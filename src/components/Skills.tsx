@@ -39,11 +39,11 @@ export default function Skills() {
       { name: "HTML", img: "/html.svg", color: "from-orange-500 to-red-500" },
       { name: "CSS", img: "/css.svg", color: "from-blue-500 to-cyan-500" },
       { name: "JavaScript", img: "https://cdn.svgporn.com/logos/javascript.svg", color: "from-yellow-400 to-yellow-600" },
-      { name: "Dart", icon: "🎯", color: "from-blue-400 to-cyan-400" }
+      { name: "Dart", img:"/dart.png", color: "from-blue-400 to-cyan-400" }
     ],
     "Frameworks": [
-      { name: "Flutter", icon: "📱", color: "from-blue-400 to-cyan-400" },
-      { name: "Firebase", icon: "🔥", color: "from-yellow-500 to-orange-500" },
+      { name: "Flutter", img: "/flutter.png", color: "from-blue-400 to-cyan-400" },
+      { name: "Firebase", img: "/firebase.png", color: "from-yellow-500 to-orange-500" },
       { name: "Next.js", img: "https://cdn.svgporn.com/logos/nextjs-icon.svg", color: "from-gray-800 to-black" },
       { name: "React.js", img: "https://cdn.svgporn.com/logos/react.svg", color: "from-cyan-400 to-blue-500" },
       { name: "Node.js", img: "https://cdn.svgporn.com/logos/nodejs-icon.svg", color: "from-green-500 to-green-700" },
@@ -53,11 +53,11 @@ export default function Skills() {
     "Tools": [
       { name: "Git", img: "https://cdn.svgporn.com/logos/git-icon.svg", color: "from-orange-500 to-red-500" },
       { name: "GitHub", img: "/github.svg", color: "from-gray-600 to-gray-800" },
-      { name: "Android Studio", icon: "🤖", color: "from-green-500 to-blue-500" },
-      { name: "Google Cloud", icon: "☁️", color: "from-blue-500 to-cyan-500" }
+      { name: "Android Studio", img: "/as.png", color: "from-green-500 to-blue-500" },
+      { name: "Google Cloud", img: "/gcp.png", color: "from-blue-500 to-cyan-500" }
     ],
     "Database": [
-      { name: "MySQL", icon: "🗄️", color: "from-orange-500 to-blue-600" },
+      { name: "MySQL", img: "mysql.png", color: "from-orange-500 to-blue-600" },
       { name: "MongoDB", img: "https://cdn.svgporn.com/logos/mongodb-icon.svg", color: "from-green-500 to-green-700" }
     ]
   };
@@ -71,8 +71,10 @@ export default function Skills() {
       <div className="max-w-6xl mx-auto">
         {/* Main Title */}
         <div className="text-center mb-16">
-          <div className="inline-block bg-gradient-to-r from-cyan-400 to-blue-500 text-white px-8 py-2 rounded-full text-xl font-medium hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 hover:scale-105 cursor-default">
-            My Skills
+        <div className="inline-block bg-gradient-to-r from-purpl-400 to-purple-500 ${
+                  isDarkMode ? 'text-white' : 'text-gray-900'
+                } px-8 py-2 rounded-full text-xl font-medium hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 hover:scale-105 cursor-default">
+        My Skills
           </div>
         </div>
 
@@ -133,7 +135,7 @@ export default function Skills() {
                           className="w-4 h-4 object-contain"
                         />
                       ) : (
-                        skill.icon
+                        skill.img
                       )}
                     </div>
                     

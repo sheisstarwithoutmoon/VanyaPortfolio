@@ -91,8 +91,10 @@ export default function Achievements() {
       <div className="max-w-6xl mx-auto">
         {/* Main Title */}
         <div className="text-center mb-16">
-          <div className="inline-block bg-gradient-to-r from-cyan-400 to-blue-500 text-white px-8 py-2 rounded-full text-xl font-medium hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 hover:scale-105 cursor-default">
-            Achievements & Certifications
+        <div className="inline-block bg-gradient-to-r from-purpl-400 to-purple-500 ${
+                  isDarkMode ? 'text-white' : 'text-gray-900'
+                } px-8 py-2 rounded-full text-xl font-medium hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 hover:scale-105 cursor-default">
+        Achievements & Certifications
           </div>
         </div>
 

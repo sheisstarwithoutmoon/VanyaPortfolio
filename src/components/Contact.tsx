@@ -63,9 +63,9 @@ export default function Contact() {
       <div className="max-w-4xl mx-auto">
         {/* Main Title */}
         <div className="text-center mb-16">
-          <div className="inline-block bg-gradient-to-r from-cyan-400 to-blue-500 text-white px-8 py-2 rounded-full text-xl font-medium hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 hover:scale-105 cursor-default mb-8">
-            Get In Touch
-          </div>
+        {/* <div className="inline-block bg-gradient-to-r from-purpl-400 to-purple-500 text-white px-8 py-1 rounded-full text-xl font-medium hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 hover:scale-105 cursor-default">
+        Get In Touch
+          </div> */}
           
           <h2 
             className={`text-4xl md:text-5xl font-bold mb-8 transition-colors duration-300 ${

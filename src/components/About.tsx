@@ -100,7 +100,9 @@ export default function About() {
                   : 'opacity-0 scale-90'
               }`}
             >
-              <span className="bg-gradient-to-r from-purple-400 to-purple-500 text-white px-8 py-2 rounded-full text-xl font-medium hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 hover:scale-105 cursor-default">
+              <span className="inline-block bg-gradient-to-r from-purpl-400 to-purple-500 ${
+                  isDarkMode ? 'text-white' : 'text-gray-900'
+                } px-8 py-2 rounded-full text-xl font-medium hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 hover:scale-105 cursor-default">
                 Education
               </span>
             </div>
@@ -190,7 +192,9 @@ export default function About() {
                   : 'opacity-0 scale-90'
               }`}
             >
-              <span className="bg-gradient-to-r from-cyan-400 to-blue-500 text-white px-8 py-2 rounded-full text-xl font-medium hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 hover:scale-105 cursor-default">
+              <span className="inline-block bg-gradient-to-r from-purpl-400 to-purple-500 ${
+                  isDarkMode ? 'text-white' : 'text-gray-900'
+                } px-8 py-2 rounded-full text-xl font-medium hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 hover:scale-105 cursor-default">
                 Experience
               </span>
             </div>

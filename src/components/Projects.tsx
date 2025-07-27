@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from 'react';
+// import Image from 'next/image';
 
 export default function Projects() {
   const [isDarkMode, setIsDarkMode] = useState(true);
@@ -66,7 +67,9 @@ export default function Projects() {
       <div className="max-w-6xl mx-auto">
         {/* Main Title */}
         <div className="text-center mb-16">
-          <div className="inline-block bg-gradient-to-r from-cyan-400 to-blue-500 text-white px-8 py-2 rounded-full text-xl font-medium hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 hover:scale-105 cursor-default">
+          <div className="inline-block bg-gradient-to-r from-purpl-400 to-purple-500 ${
+                  isDarkMode ? 'text-white' : 'text-gray-900'
+                } px-8 py-2 rounded-full text-xl font-medium hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 hover:scale-105 cursor-default">
             My Projects
           </div>
         </div>
