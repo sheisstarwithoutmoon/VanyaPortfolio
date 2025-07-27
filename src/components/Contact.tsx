@@ -54,18 +54,18 @@ export default function Contact() {
   return (
     <section 
       id="contact" 
-      className={`min-h-screen py-16 px-8 transition-colors duration-300 ${
+      className={`py-16 px-8 transition-colors duration-300 ${
         isDarkMode 
           ? 'bg-[#112240] text-white' 
           : 'bg-gray-50 text-gray-900'
       }`}
     >
-      <div className="max-w-4xl mx-auto">
-        {/* Main Title */}
+      {/* <div className="max-w-4xl mx-auto">
+         Main Title 
         <div className="text-center mb-16">
         {/* <div className="inline-block bg-gradient-to-r from-purpl-400 to-purple-500 text-white px-8 py-1 rounded-full text-xl font-medium hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 hover:scale-105 cursor-default">
         Get In Touch
-          </div> */}
+          </div> 
           
           <h2 
             className={`text-4xl md:text-5xl font-bold mb-8 transition-colors duration-300 ${
@@ -89,10 +89,10 @@ export default function Contact() {
           </div>
         </div>
 
-        {/* Contact Form */}
+        {/* Contact Form 
         <div className="max-w-2xl mx-auto">
           <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Name Input */}
+            {/* Name Input 
             <div className="group">
               <label 
                 htmlFor="name"
@@ -120,7 +120,7 @@ export default function Contact() {
               />
             </div>
 
-            {/* Email Input */}
+            {/* Email Input 
             <div className="group">
               <label 
                 htmlFor="email"
@@ -148,7 +148,7 @@ export default function Contact() {
               />
             </div>
 
-            {/* Message Textarea */}
+            {/* Message Textarea 
             <div className="group">
               <label 
                 htmlFor="message"
@@ -176,7 +176,7 @@ export default function Contact() {
               />
             </div>
 
-            {/* Submit Button */}
+            {/* Submit Button
             <div className="text-center pt-4">
               <button
                 type="submit"
@@ -187,7 +187,7 @@ export default function Contact() {
                 }`}
                 style={{ fontFamily: 'Inter, sans-serif' }}
               >
-                {/* Button shine effect */}
+                {/* Button shine effect
                 <div className={`absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent to-transparent ${
                   isDarkMode ? 'via-white/20' : 'via-black/10'
                 }`} />
@@ -195,8 +195,8 @@ export default function Contact() {
               </button>
             </div>
           </form>
-      </div>
-      </div>
+      </div> */}
+      {/* </div> */}
           {/* Alternative Contact Methods */}
           
 

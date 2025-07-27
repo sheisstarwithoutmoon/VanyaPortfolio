@@ -62,7 +62,7 @@ export default function Achievements() {
       icon: "🎓",
       category: "Academic",
       color: "from-purple-500 to-pink-500",
-      link:""
+      // link:""
     },
     {
       title: "App-a-thon 2024",
@@ -78,7 +78,7 @@ export default function Achievements() {
       icon: "🎯",
       category: "Entrance Exam",
       color: "from-red-500 to-pink-500",
-      link: ""
+      // link: ""
     }
   ];
 
@@ -103,7 +103,7 @@ export default function Achievements() {
           {achievements.map((achievement, index) => (
             <a
               key={index}
-              href={achievement.link || '#'}
+              href={achievement.link}
               target={achievement.link && !achievement.link.startsWith('mailto:') ? '_blank' : '_self'}
               rel={achievement.link && !achievement.link.startsWith('mailto:') ? 'noopener noreferrer' : ''}
               className={`group relative overflow-hidden backdrop-blur-sm border rounded-xl hover:transform hover:-translate-y-2 transition-all duration-300 ease-out cursor-pointer block ${
