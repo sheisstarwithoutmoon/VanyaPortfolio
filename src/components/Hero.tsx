@@ -1,54 +1,23 @@
 "use client";
 import React, { useState, useEffect } from 'react';
-import { Github, Linkedin, Home, CheckCircle, Mail, FileText, Sun } from 'lucide-react';
 
 export default function Hero() {
-  const [isDarkMode, setIsDarkMode] = useState(true);
   const [isDownloading, setIsDownloading] = useState(false);
-
-  // Listen for theme changes
-  useEffect(() => {
-    const updateTheme = () => {
-      const isDark = document.documentElement.classList.contains('dark');
-      setIsDarkMode(isDark);
-    };
-
-    // Initial check
-    updateTheme();
-
-    // Listen for class changes on documentElement
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-          updateTheme();
-        }
-      });
-    });
-
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ['class']
-    });
-
-    return () => observer.disconnect();
-  }, []);
 
   // Resume download function
   const downloadResume = async () => {
     setIsDownloading(true);
     
     try {
-      // Check if file exists first (optional, for better UX)
       const response = await fetch('/resume.pdf', { method: 'HEAD' });
       
       if (!response.ok) {
         throw new Error('Resume file not found');
       }
 
-      // Create download link
       const link = document.createElement('a');
-      link.href = '/resume.pdf'; // Make sure your resume.pdf is in the public folder
-      link.download = 'Vanya_Awasthi_Resume.pdf'; // Custom download filename
+      link.href = '/resume.pdf';
+      link.download = 'Vanya_Awasthi_Resume.pdf';
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -62,158 +31,82 @@ export default function Hero() {
   };
 
   return (
-    <section className="min-h-screen relative overflow-hidden transition-all duration-300">
-      {/* Background image with theme-responsive opacity */}
-      <div 
-        className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-300 ${
-          isDarkMode ? 'opacity-25' : 'opacity-40'
-        }`}
-        style={{
-          backgroundImage: `url('/bgg.jpg')`
-        }}
-      ></div>
-      
-      {/* Theme-responsive overlay */}
-      <div className={`absolute inset-0 transition-all duration-300 ${
-        isDarkMode 
-          ? ' bg-opacity-70' 
-          : 'bg-transparent'
-      }`}></div>
-
-      {/* Main content */}
-      <div className="relative flex flex-col items-center justify-center min-h-screen px-6 text-center" style={{ zIndex: 10 }}>
-        {/* Cyan line accent */}
-        <div className="w-24 h-0.5 bg-cyan-400 mb-12"></div>
-        
-        {/* Hello text */}
-        <div className="mb-8">
-          <span className={`text-lg font-light tracking-wider transition-colors duration-300 ${
-            isDarkMode ? 'text-white' : 'text-gray-800'
-          }`}>
-            HELLO, WORLD
-          </span>
-        </div>
-
-        {/* Main heading with gradient text */}
-        <h1 className="text-6xl md:text-7xl lg:text-8xl font-light mb-12 leading-tight" style={{ fontFamily: 'Inter, sans-serif' }}>
-          <span className={`font-light transition-colors duration-300 ${
-            isDarkMode ? 'text-white' : 'text-gray-900'
-          }`}>
-            I'm Vanya{' '}
-          </span>
-          <span 
-            className="font-light bg-gradient-to-r from-purple-400 via-purple-500 to-green-500 bg-clip-text text-transparent"
-            style={{ fontFamily: 'Inter, sans-serif' }}
-          >
-            Awasthi
-          </span>
-        </h1>
-
-        {/* Role descriptors */}
-        <div className="flex flex-wrap justify-center gap-8 md:gap-12 mb-16">
-          <span 
-            className={`text-base md:text-lg font-light tracking-wider border-l-2 pl-4 transition-colors duration-300 ${
-              isDarkMode 
-                ? 'text-gray-300 border-gray-600' 
-                : 'text-gray-600 border-gray-400'
-            }`}
-            style={{ 
-              animation: 'fadeInUp 0.8s ease-out 0.5s both',
-              opacity: 0
-            }}
-          >
-            STUDENT
-          </span>
-          <span 
-            className={`text-base md:text-lg font-light tracking-wider border-l-2 pl-4 transition-colors duration-300 ${
-              isDarkMode 
-                ? 'text-gray-300 border-gray-600' 
-                : 'text-gray-600 border-gray-400'
-            }`}
-            style={{ 
-              animation: 'fadeInUp 0.8s ease-out 0.8s both',
-              opacity: 0
-            }}
-          >
-            DEVELOPER
-          </span>
-          <span 
-            className={`text-base md:text-lg font-light tracking-wider border-l-2 pl-4 transition-colors duration-300 ${
-              isDarkMode 
-                ? 'text-gray-300 border-gray-600' 
-                : 'text-gray-600 border-gray-400'
-            }`}
-            style={{ 
-              animation: 'fadeInUp 0.8s ease-out 1.1s both',
-              opacity: 0
-            }}
-          >
-            PROBLEM SOLVER
-          </span>
-        </div>
-
-        {/* Action buttons */}
-        <div className="flex flex-col sm:flex-row gap-6 mb-16">
-        <button 
-          className={`px-8 py-4 text-sm font-medium tracking-wider uppercase transition-all duration-300 rounded-sm ${
-            isDarkMode
-              ? 'bg-white text-black hover:bg-gray-200'
-              : 'bg-gray-900 text-white hover:bg-gray-800'
-          }`}
-          onClick={() => window.open('mailto:awasthi.v23@iiits.in?subject=Contact%20Inquiry&body=Hello,%20I%20would%20like%20to%20get%20in%20touch.', '_self')}
-          suppressHydrationWarning
-        >
-          Get In Touch
-        </button>
-          <button 
-            onClick={downloadResume}
-            disabled={isDownloading}
-            className={`border-2 px-8 py-4 text-sm font-medium tracking-wider uppercase transition-all duration-300 rounded-sm flex items-center justify-center gap-2 ${
-              isDownloading
-                ? 'border-gray-400 text-gray-400 cursor-not-allowed'
-                : isDarkMode
-                ? 'border-white text-white hover:bg-white hover:text-black'
-                : 'border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white'
-            }`}
-          >
-            <span>{isDownloading ? 'Downloading...' : 'Download Resume'}</span>
-            {isDownloading ? (
-              <div className="animate-spin h-4 w-4 border-2 border-current border-t-transparent rounded-full"></div>
-            ) : (
-              <svg
-                width="19"
-                height="19"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="text-current"
-              >
-                <path
-                  d="M12.5535 16.5061C12.4114 16.6615 12.2106 16.75 12 16.75C11.7894 16.75 11.5886 16.6615 11.4465 16.5061L7.44648 12.1311C7.16698 11.8254 7.18822 11.351 7.49392 11.0715C7.79963 10.792 8.27402 10.8132 8.55352 11.1189L11.25 14.0682V3C11.25 2.58579 11.5858 2.25 12 2.25C12.4142 2.25 12.75 2.58579 12.75 3V14.0682L15.4465 11.1189C15.726 10.8132 16.2004 10.792 16.5061 11.0715C16.8118 11.351 16.833 11.8254 16.5535 12.1311L12.5535 16.5061Z"
-                  fill="currentColor"
-                />
-                <path
-                  d="M3.75 15C3.75 14.5858 3.41422 14.25 3 14.25C2.58579 14.25 2.25 14.5858 2.25 15V15.0549C2.24998 16.4225 2.24996 17.5248 2.36652 18.3918C2.48754 19.2919 2.74643 20.0497 3.34835 20.6516C3.95027 21.2536 4.70814 21.5125 5.60825 21.6335C6.47522 21.75 7.57754 21.75 8.94513 21.75H15.0549C16.4225 21.75 17.5248 21.75 18.3918 21.6335C19.2919 21.5125 20.0497 21.2536 20.6517 20.6516C21.2536 20.0497 21.5125 19.2919 21.6335 18.3918C21.75 17.5248 21.75 16.4225 21.75 15.0549V15C21.75 14.5858 21.4142 14.25 21 14.25C20.5858 14.25 20.25 14.5858 20.25 15C20.25 16.4354 20.2484 17.4365 20.1469 18.1919C20.0482 18.9257 19.8678 19.3142 19.591 19.591C19.3142 19.8678 18.9257 20.0482 18.1919 20.1469C17.4365 20.2484 16.4354 20.25 15 20.25H9C7.56459 20.25 6.56347 20.2484 5.80812 20.1469C5.07435 20.0482 4.68577 19.8678 4.40901 19.591C4.13225 19.3142 3.9518 18.9257 3.85315 18.1919C3.75159 17.4365 3.75 16.4354 3.75 15Z"
-                  fill="currentColor"
-                />
-              </svg>
-            )}
-          </button>
-        </div>
+    <section className="hero-editorial relative min-h-screen flex items-center justify-center">
+      {/* Optimized Background Image Layer */}
+      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+        <img
+          src="/pink.png"
+          alt="Editorial background texture"
+          loading="eager"
+          fetchPriority="high"
+          className="w-full h-full object-cover opacity-[0.79] saturate-[0.85] contrast-[1.02] blur-[1px] dark:opacity-[0.65] dark:saturate-[0.95] dark:contrast-[1.05] dark:brightness-[0.95]"
+        />
       </div>
 
-      <style jsx>{`
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-      `}</style>
+      <div className="relative z-10 w-full py-20 lg:py-0">
+        <div className="container mx-auto px-6 max-w-5xl grid items-center gap-12 lg:grid-cols-[1.15fr_0.85fr] pt-12 lg:pt-0">
+          
+          {/* Left Editorial Copy */}
+          <div className="hero-fade-in flex flex-col space-y-8 max-w-2xl text-center lg:text-left items-center lg:items-start">
+            
+            <div className="space-y-4 w-full">
+              <div className="handwritten text-4xl md:text-5xl font-normal text-[color:var(--text-title)] tracking-wide">
+                hi, i'm
+              </div>
+              <h1 className="hero-name text-6xl md:text-7xl lg:text-8xl leading-none text-[color:var(--text-title)] font-bold">
+                vanya awasthi
+              </h1>
+              <div className="text-xs md:text-sm uppercase tracking-[0.28em] text-muted font-semibold mt-2">
+                developer · problem solver · researcher
+              </div>
+            </div>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto pt-2">
+              <a
+                href="mailto:awasthi.v23@iiits.in?subject=Let's%20Collaborate"
+                className="btn-primary px-8 py-3.5 rounded-full text-xs md:text-sm font-semibold uppercase tracking-wider text-center"
+              >
+                Get in Touch
+              </a>
+              <button
+                onClick={downloadResume}
+                disabled={isDownloading}
+                className="px-8 py-3.5 rounded-full text-xs md:text-sm font-semibold uppercase tracking-wider text-center flex items-center justify-center gap-2 bg-white text-black border border-neutral-200/80 shadow-sm hover:bg-neutral-50 dark:hover:bg-neutral-100 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+              >
+                {isDownloading ? (
+                  <>
+                    <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-current" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                    </svg>
+                    Downloading...
+                  </>
+                ) : (
+                  <>
+                    Download Resume
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                    </svg>
+                  </>
+                )}
+              </button>
+            </div>
+          </div>
+
+          {/* Right Clean Visual Column (Completely static, no motion, no backing rectangles) */}
+          <div className="hero-fade-in flex justify-center lg:justify-end items-center mt-8 lg:mt-0">
+            <div className="relative">
+              <img
+                src="/van.jpeg"
+                alt="Vanya Awasthi portrait"
+                className="w-64 sm:w-72 md:w-80 lg:w-[23rem] aspect-[4/5] object-cover rounded-3xl shadow-lg border border-[color:var(--stroke)]"
+              />
+            </div>
+          </div>
+
+        </div>
+      </div>
     </section>
   );
 }

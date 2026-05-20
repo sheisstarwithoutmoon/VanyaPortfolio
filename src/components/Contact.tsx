@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 export default function Contact() {
   const [isDarkMode, setIsDarkMode] = useState(true);
@@ -16,10 +16,8 @@ export default function Contact() {
       setIsDarkMode(isDark);
     };
 
-    // Initial check
     updateTheme();
 
-    // Listen for class changes on documentElement
     const observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
         if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
@@ -36,7 +34,7 @@ export default function Contact() {
     return () => observer.disconnect();
   }, []);
 
-  const handleInputChange = (e: { target: { name: any; value: any; }; }) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
@@ -44,171 +42,155 @@ export default function Contact() {
     }));
   };
 
-  const handleSubmit = (e: { preventDefault: () => void; }) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
     console.log('Form submitted:', formData);
-    // You can add your form submission logic here
+    // Open email client prefilled
+    const subject = encodeURIComponent("Let's Collaborate");
+    const body = encodeURIComponent(`Hello Vanya,\n\nMy name is ${formData.name} (${formData.email}).\n\n${formData.message}`);
+    window.open(`mailto:awasthi.v23@iiits.in?subject=${subject}&body=${body}`, '_self');
   };
 
   return (
     <section 
       id="contact" 
-      className={`py-16 px-8 transition-colors duration-300 ${
-        isDarkMode 
-          ? 'bg-[#112240] text-white' 
-          : 'bg-gray-50 text-gray-900'
+      className={`pt-16 pb-40 transition-colors duration-300 relative ${
+        isDarkMode ? 'bg-transparent text-[color:var(--text-primary)]' : 'bg-transparent text-[color:var(--text-primary)]'
       }`}
     >
-      {/* <div className="max-w-4xl mx-auto">
-         Main Title 
-        <div className="text-center mb-16">
-        {/* <div className="inline-block bg-gradient-to-r from-purpl-400 to-purple-500 text-white px-8 py-1 rounded-full text-xl font-medium hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 hover:scale-105 cursor-default">
-        Get In Touch
-          </div> 
-          
-          <h2 
-            className={`text-4xl md:text-5xl font-bold mb-8 transition-colors duration-300 ${
-              isDarkMode ? 'text-white' : 'text-gray-900'
-            }`}
-            style={{ fontFamily: 'Inter, sans-serif' }}
-          >
-            Let's Work Together
+      <div className="container mx-auto px-6 max-w-5xl">
+        
+        {/* Editorial Header */}
+        <div className="flex items-center gap-6 mb-12">
+          <h2 className="section-title text-3xl md:text-4xl text-[color:var(--text-title)] font-bold shrink-0 lowercase">
+            / contact
           </h2>
-          
-          <div className="max-w-2xl mx-auto">
-            <p 
-              className={`text-center text-lg leading-relaxed mb-12 transition-colors duration-300 ${
-                isDarkMode ? 'text-gray-300' : 'text-gray-600'
-              }`}
-              style={{ fontFamily: 'Inter, sans-serif' }}
-            >
-              I'm currently looking for new opportunities. Whether you have a question or just want to say hi, 
-              I'll try my best to get back to you!
-            </p>
-          </div>
+          <div className="h-[1px] w-full bg-gradient-to-r from-[color:var(--stroke)] to-transparent" />
         </div>
 
-        {/* Contact Form 
-        <div className="max-w-2xl mx-auto">
-          <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Name Input 
-            <div className="group">
-              <label 
-                htmlFor="name"
-                className={`block text-sm font-medium mb-2 transition-colors duration-300 ${
-                  isDarkMode ? 'text-gray-300' : 'text-gray-700'
-                }`}
-                style={{ fontFamily: 'Inter, sans-serif' }}
-              >
-                Name
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleInputChange}
-                placeholder="Your Name"
-                required
-                className={`w-full p-4 rounded-lg border transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent ${
-                  isDarkMode
-                    ? 'bg-[#0a192f] border-gray-600 text-white placeholder-gray-400 hover:border-gray-500'
-                    : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500 hover:border-gray-400'
-                }`}
-                style={{ fontFamily: 'Inter, sans-serif' }}
-              />
+        {/* Content Grid */}
+        <div className="grid md:grid-cols-2 gap-10 items-start mt-8">
+          
+          {/* Info Card (Left) */}
+          <div className="panel panel-muted rounded-3xl p-8 bg-[color:var(--surface-2)] border border-[color:var(--stroke)] shadow-[0_8px_30px_rgba(27,19,26,0.01)] space-y-6">
+            <div>
+              <span className="text-xs uppercase tracking-wider text-[color:var(--accent-rose)] font-bold">
+                Let's Work Together
+              </span>
+              <h3 className="section-title text-2xl md:text-3xl text-[color:var(--text-title)] font-bold mt-2">
+                direct line
+              </h3>
+            </div>
+            
+            <p className="text-muted text-sm md:text-base leading-relaxed">
+              Open to internships, collaborations, and product work where craft and engineering meet. If you are building a product or need a technical developer, I would love to hear the story.
+            </p>
+
+            <div className="space-y-3 pt-2">
+              {[
+                'Full-stack web and Flutter apps',
+                'Product design and UX systems',
+                'Creative, technical collaboration'
+              ].map((item) => (
+                <div key={item} className="flex items-center gap-3">
+                  <span className="text-[color:var(--accent-rose)] font-medium select-none text-sm">—</span>
+                  <span className="text-muted text-sm md:text-base">{item}</span>
+                </div>
+              ))}
             </div>
 
-            {/* Email Input 
-            <div className="group">
-              <label 
-                htmlFor="email"
-                className={`block text-sm font-medium mb-2 transition-colors duration-300 ${
-                  isDarkMode ? 'text-gray-300' : 'text-gray-700'
-                }`}
-                style={{ fontFamily: 'Inter, sans-serif' }}
+            <div className="flex flex-wrap gap-4 pt-4">
+              <a
+                href="mailto:awasthi.v23@iiits.in?subject=Let's%20Collaborate"
+                className="px-6 py-3 text-xs md:text-sm font-semibold tracking-wider uppercase rounded-full border border-[color:var(--stroke)] bg-[color:var(--surface-3)] text-[color:var(--text-primary)] hover:border-[color:var(--accent-rose)] hover:bg-[color:var(--accent-rose)]/5 transition-all duration-300"
               >
-                Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleInputChange}
-                placeholder="your.email@example.com"
-                required
-                className={`w-full p-4 rounded-lg border transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent ${
-                  isDarkMode
-                    ? 'bg-[#0a192f] border-gray-600 text-white placeholder-gray-400 hover:border-gray-500'
-                    : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500 hover:border-gray-400'
-                }`}
-                style={{ fontFamily: 'Inter, sans-serif' }}
-              />
-            </div>
-
-            {/* Message Textarea 
-            <div className="group">
-              <label 
-                htmlFor="message"
-                className={`block text-sm font-medium mb-2 transition-colors duration-300 ${
-                  isDarkMode ? 'text-gray-300' : 'text-gray-700'
-                }`}
-                style={{ fontFamily: 'Inter, sans-serif' }}
+                Email Me
+              </a>
+              <a
+                href="/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-3 text-xs md:text-sm font-semibold tracking-wider uppercase rounded-full border border-[color:var(--stroke)] text-[color:var(--text-primary)] hover:border-[color:var(--accent-lavender)] hover:bg-[color:var(--accent-lavender)]/5 transition-all duration-300"
               >
-                Message
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleInputChange}
-                placeholder="Tell me about your project or just say hello..."
-                rows={6}
-                required
-                className={`w-full p-4 rounded-lg border transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent resize-vertical ${
-                  isDarkMode
-                    ? 'bg-[#0a192f] border-gray-600 text-white placeholder-gray-400 hover:border-gray-500'
-                    : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500 hover:border-gray-400'
-                }`}
-                style={{ fontFamily: 'Inter, sans-serif' }}
-              />
+                Resume
+              </a>
             </div>
+          </div>
 
-            {/* Submit Button
-            <div className="text-center pt-4">
+          {/* Form Card (Right) */}
+          <form
+            onSubmit={handleSubmit}
+            className="panel panel-muted rounded-3xl p-8 bg-[color:var(--surface-2)] border border-[color:var(--stroke)] shadow-[0_8px_30px_rgba(27,19,26,0.01)]"
+          >
+            <div className="space-y-6">
+              <div>
+                <label
+                  htmlFor="name"
+                  className="block text-xs uppercase tracking-wider font-semibold mb-2 text-muted"
+                >
+                  Name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  placeholder="Your name"
+                  required
+                  className="w-full p-4 rounded-2xl border border-[color:var(--stroke)] bg-[color:var(--surface-3)] text-[color:var(--text-primary)] placeholder-[color:var(--text-muted)] focus:outline-none focus:border-[color:var(--accent-rose)] focus:ring-1 focus:ring-[color:var(--accent-rose)]/20 transition-all duration-300"
+                />
+              </div>
+
+              <div>
+                <label
+                  htmlFor="email"
+                  className="block text-xs uppercase tracking-wider font-semibold mb-2 text-muted"
+                >
+                  Email
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  placeholder="you@example.com"
+                  required
+                  className="w-full p-4 rounded-2xl border border-[color:var(--stroke)] bg-[color:var(--surface-3)] text-[color:var(--text-primary)] placeholder-[color:var(--text-muted)] focus:outline-none focus:border-[color:var(--accent-rose)] focus:ring-1 focus:ring-[color:var(--accent-rose)]/20 transition-all duration-300"
+                />
+              </div>
+
+              <div>
+                <label
+                  htmlFor="message"
+                  className="block text-xs uppercase tracking-wider font-semibold mb-2 text-muted"
+                >
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  placeholder="Tell me about your idea..."
+                  rows={5}
+                  required
+                  className="w-full p-4 rounded-2xl border border-[color:var(--stroke)] bg-[color:var(--surface-3)] text-[color:var(--text-primary)] placeholder-[color:var(--text-muted)] focus:outline-none focus:border-[color:var(--accent-rose)] focus:ring-1 focus:ring-[color:var(--accent-rose)]/20 transition-all duration-300 resize-none"
+                />
+              </div>
+
               <button
                 type="submit"
-                className={`group relative overflow-hidden px-8 py-4 border-2 rounded-lg font-medium text-lg tracking-wider uppercase transition-all duration-300 hover:transform hover:-translate-y-1 ${
-                  isDarkMode
-                    ? 'border-white text-white hover:bg-white hover:text-[#0a192f] hover:shadow-lg hover:shadow-white/25'
-                    : 'border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white hover:shadow-lg hover:shadow-gray-900/25'
-                }`}
-                style={{ fontFamily: 'Inter, sans-serif' }}
+                className="w-full px-6 py-4 text-xs font-semibold tracking-wider uppercase rounded-full border border-[color:var(--accent-rose)] bg-[color:var(--accent-rose)] text-[color:var(--background)] hover:bg-transparent hover:text-[color:var(--text-primary)] hover:border-[color:var(--accent-rose)] transition-all duration-300 cursor-pointer text-center"
               >
-                {/* Button shine effect
-                <div className={`absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent to-transparent ${
-                  isDarkMode ? 'via-white/20' : 'via-black/10'
-                }`} />
-                <span className="relative">Send Message</span>
+                Send Message
               </button>
             </div>
           </form>
-      </div> */}
-      {/* </div> */}
-          {/* Alternative Contact Methods */}
-          
+        </div>
 
-      {/* Background Effects */}
-      {/* <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
-        <div className={`absolute top-1/4 left-1/4 w-96 h-96 rounded-full blur-3xl animate-pulse ${
-          isDarkMode ? 'bg-cyan-500/10' : 'bg-cyan-500/5'
-        }`} />
-        <div className={`absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full blur-3xl animate-pulse delay-1000 ${
-          isDarkMode ? 'bg-blue-500/10' : 'bg-blue-500/5'
-        }`} />
-      </div> */}
+      </div>
     </section>
   );
 }

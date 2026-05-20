@@ -1,9 +1,10 @@
-import Image from "next/image";
 import Hero from "@/components/Hero";
-import About from "../components/About";
+import About from "@/components/About";
 import Skills from "@/components/Skills";
+import Experience from "@/components/Experience";
+import Research from "@/components/Research";
 import Projects from "@/components/Projects";
-import Contact from "@/components/Contact";
+import Leadership from "@/components/Leadership";
 import Achievements from "@/components/Achievements";
 import SocialLinks from "@/components/SocialLinks";
 
@@ -14,10 +15,18 @@ export default function Home() {
         <Hero />
         <About />
         <Skills />
+        <Experience />
         <Projects />
+        <Research />
+        <Leadership />
         <Achievements />
-        <Contact />
       </main>
+      
+      <footer className="w-full text-center py-10 pb-32 text-xs font-medium tracking-wide text-muted/50 space-y-1.5 select-none">
+        <p>Built and designed by Vanya Awasthi.</p>
+        <p>All rights reserved. ©</p>
+      </footer>
+
       <SocialLinks />
     </div>
   );
