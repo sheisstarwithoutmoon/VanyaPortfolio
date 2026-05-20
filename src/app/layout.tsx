@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Vanya Awasthi | Portfolio Website | Developer',
+  title: 'Vanya Awasthi',
   description: 'Vanya Awasthi Portfolio Website',
   keywords: 'vanya, awasthi, vanya awasthi, madhya pradesh, developer, android developer',
   authors: [{ name: 'Vanya Awasthi', url: 'https://sheisstarwithoutmoon.github.io/Portfolio/' }],
