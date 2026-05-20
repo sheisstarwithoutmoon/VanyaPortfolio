@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from 'react';
+import Sticker from './Sticker';
 
 export default function About() {
   const [isDarkMode, setIsDarkMode] = useState(true);
@@ -32,7 +33,7 @@ export default function About() {
   return (
     <section 
       id="about" 
-      className={`py-16 overflow-hidden transition-colors duration-300 ${
+      className={`py-16 overflow-visible transition-colors duration-300 ${
         isDarkMode ? 'bg-transparent text-[color:var(--text-primary)]' : 'bg-transparent text-[color:var(--text-primary)]'
       }`}
     >
@@ -41,7 +42,15 @@ export default function About() {
         <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-start">
           
           {/* Bio text */}
-          <div className="space-y-6">
+          <div className="space-y-6 relative">
+            <Sticker
+              src="/stickers/stick2.png"
+              alt="Vanya's Custom Sticker 2"
+              initialRotation={0}
+              width="w-20 sm:w-24 md:w-28"
+              className="-top-20 left-4 md:top-12 md:-left-38 lg:top-16 lg:-left-44 xl:-left-48"
+              animate="delayed"
+            />
             {/* Header */}
             <div className="flex items-center gap-4">
               <h2 className="section-title text-3xl md:text-4xl text-[color:var(--text-title)] font-bold shrink-0 lowercase">
