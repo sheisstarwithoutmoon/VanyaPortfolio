@@ -355,6 +355,15 @@ html {
   animation: fishSwim 12s linear infinite;
   will-change: transform;
 }
+.fish-swim-delay {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  animation: fishSwim 12s linear infinite;
+  animation-delay: -6s;
+  will-change: transform;
+}
 
 @keyframes fishSwim {
   0% {

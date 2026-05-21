@@ -22,12 +22,18 @@ export default function Home() {
         <Achievements />
       </main>
 
+      
       <div className="relative w-full overflow-hidden h-24 sm:h-28 md:h-32">
         <img
           src="/stickers/fish_pixel.png"
           alt="Pixel fish"
           className="fish-swim w-20 sm:w-24 md:w-28 h-auto pointer-events-none select-none"
-          loading="lazy"
+        />
+
+        <img
+          src="/stickers/fish_pixel.png"
+          alt="Pixel fish"
+          className="fish-swim-delay w-20 sm:w-24 md:w-28 h-auto pointer-events-none select-none"
         />
       </div>
       
