@@ -55,6 +55,7 @@
 
 body {
   color: var(--text-primary);
+  overflow-x: hidden;
   background-color: var(--background);
   background-image: 
     linear-gradient(var(--grid-line-color) 1px, transparent 1px),
@@ -79,6 +80,7 @@ body::after {
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 @layer base {
@@ -270,6 +272,7 @@ html {
 
 /* Custom slow rotation for badges */
 .animate-spin-slow {
+    overflow-x: hidden;
   animation: spinSlow 20s linear infinite;
 }
 
@@ -300,6 +303,80 @@ html {
     transform: translateY(-10px);
   }
 }
+
+/* One-time load-in motion for stickers */
+.sticker-load-in {
+  animation: stickerLoadIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes stickerLoadIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Soft, dreamy motion for mobile stickers */
+.sticker-dreamy {
+  animation: dreamyFloat 7s ease-in-out infinite;
+  will-change: transform;
+}
+
+.sticker-dreamy-delay-1 {
+  animation-delay: 0.8s;
+}
+
+.sticker-dreamy-delay-2 {
+  animation-delay: 1.6s;
+}
+
+@keyframes dreamyFloat {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-6px) rotate(-2deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+/* Pixel fish swim animation */
+.fish-swim {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  animation: fishSwim 12s linear infinite;
+  will-change: transform;
+}
+
+@keyframes fishSwim {
+  0% {
+    transform: translate(-20vw, -50%) translateY(0px);
+  }
+  20% {
+    transform: translate(10vw, -50%) translateY(-20px);
+  }
+  40% {
+    transform: translate(35vw, -50%) translateY(20px);
+  }
+  60% {
+    transform: translate(65vw, -50%) translateY(-20px);
+  }
+  80% {
+    transform: translate(95vw, -50%) translateY(20px);
+  }
+  100% {
+    transform: translate(120vw, -50%) translateY(0px);
+  }
+}
+
 
 /* Button & Card Micro-Interactions */
 .btn-primary {

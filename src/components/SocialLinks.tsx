@@ -5,10 +5,8 @@ import { useState, useEffect } from 'react';
 
 const SocialLinks = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    if (typeof window === 'undefined') return false;
-    return window.matchMedia('(prefers-color-scheme: dark)').matches;
-  });
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   // Initialize theme on component mount
   useEffect(() => {
@@ -23,6 +21,8 @@ const SocialLinks = () => {
       setIsDarkMode(prefersDark);
       document.documentElement.classList.toggle('dark', prefersDark);
     }
+
+    setIsMounted(true);
   }, []);
 
   // Toggle theme function
@@ -94,9 +94,11 @@ const SocialLinks = () => {
       external: true
     },
     {
-      icon: isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />,
+      icon: isMounted
+        ? (isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />)
+        : <Moon className="w-5 h-5" />,
       href: "#",
-      label: isDarkMode ? "Light Mode" : "Dark Mode",
+      label: isMounted ? (isDarkMode ? "Light Mode" : "Dark Mode") : "Dark Mode",
       onClick: toggleTheme
     }
   ];

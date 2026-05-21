@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from 'react';
+import Sticker from './Sticker';
 import { Github, ExternalLink, Folder, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export default function Projects() {
@@ -66,7 +67,16 @@ export default function Projects() {
         isDarkMode ? 'bg-transparent text-[color:var(--text-primary)]' : 'bg-transparent text-[color:var(--text-primary)]'
       }`}
     >
-      <div className="container mx-auto px-6 max-w-5xl">
+      <div className="container mx-auto px-6 max-w-5xl relative">
+        <Sticker
+          src="/stickers/bow_pixel.png"
+          alt="pixel bow sticker"
+          className="-right-2 -top-4 sm:-right-4 sm:-top-6 lg:-right-10"
+          initialRotation={-10}
+          width="w-24 md:w-28"
+          animate="none"
+          withFrame={false}
+        />
         
         {/* Editorial Header */}
         <div className="flex items-center justify-between gap-6 mb-12">

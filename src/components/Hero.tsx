@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from 'react';
+import Sticker from './Sticker';
 
 export default function Hero() {
   const [isDownloading, setIsDownloading] = useState(false);
@@ -33,14 +34,16 @@ export default function Hero() {
   return (
     <section className="hero-editorial relative min-h-screen flex items-center justify-center">
       {/* Optimized Background Image Layer */}
-      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-        <img
-          src="/pink.png"
-          alt="Editorial background texture"
-          loading="eager"
-          fetchPriority="high"
-          className="w-full h-full object-cover opacity-[0.79] saturate-[0.85] contrast-[1.02] blur-[1px] dark:opacity-[0.65] dark:saturate-[0.95] dark:contrast-[1.05] dark:brightness-[0.95]"
-        />
+      <div
+        className="absolute inset-0 z-0 pointer-events-none overflow-hidden"
+        style={{
+          backgroundImage: "url('/pink.png')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      >
+        <div className="w-full h-full bg-[#f3d1da]/70 dark:bg-[#3a2230]/70" />
       </div>
 
       <div className="relative z-10 w-full py-20 lg:py-0">
@@ -101,6 +104,15 @@ export default function Hero() {
                 src="/van.jpeg"
                 alt="Vanya Awasthi portrait"
                 className="w-64 sm:w-72 md:w-80 lg:w-[23rem] aspect-[4/5] object-cover rounded-3xl shadow-lg border border-[color:var(--stroke)]"
+              />
+              <Sticker
+                src="/stickers/bow_paperpin.png"
+                alt="paper pin bow sticker"
+                className="-top-12 -right-8 sm:-top-50 sm:-right-30 md:-top-38 md:-right-20"
+                initialRotation={30}
+                width="w-20 sm:w-50 md:w-44"
+                animate="none"
+                withFrame={false}
               />
             </div>
           </div>

@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from 'react';
+import Sticker from './Sticker';
 
 export default function About() {
   const [isDarkMode, setIsDarkMode] = useState(true);
@@ -32,11 +33,20 @@ export default function About() {
   return (
     <section 
       id="about" 
-      className={`py-16 overflow-hidden transition-colors duration-300 ${
+      className={`py-16 overflow-hidden transition-colors duration-300 relative ${
         isDarkMode ? 'bg-transparent text-[color:var(--text-primary)]' : 'bg-transparent text-[color:var(--text-primary)]'
       }`}
     >
-      <div className="container mx-auto px-6 max-w-5xl">
+      <div className="container mx-auto px-6 max-w-5xl relative">
+        <Sticker
+          src="/stickers/stars.png"
+          alt="stars sticker"
+          className="hidden md:block -left-12 top-2 lg:-left-50"
+          initialRotation={6}
+          width="w-56 md:w-50"
+          animate="none"
+          withFrame={false}
+        />
         
         <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-start">
           
