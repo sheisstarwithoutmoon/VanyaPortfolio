@@ -5,7 +5,10 @@ import { useState, useEffect } from 'react';
 
 const SocialLinks = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+  });
 
   // Initialize theme on component mount
   useEffect(() => {
