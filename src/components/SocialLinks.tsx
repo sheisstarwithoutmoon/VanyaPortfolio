@@ -113,7 +113,7 @@ const SocialLinks = () => {
         {socialLinks.map((link, index) => (
           <div key={index} className="relative">
             {/* Tooltip */}
-            {hoveredIndex === index && (
+            {hoveredIndex === index && link.label !== "Dark Mode" && link.label !== "Light Mode" && (
               <div className="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2">
                 <div className={`text-xs px-2 py-1 rounded whitespace-nowrap ${
                   isDarkMode 
