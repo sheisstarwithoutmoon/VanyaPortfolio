@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from 'react';
+import { portfolio } from '@/lib/portfolio';
 
 export default function Skills() {
   const [isDarkMode, setIsDarkMode] = useState(true);
@@ -29,38 +30,9 @@ export default function Skills() {
     return () => observer.disconnect();
   }, []);
 
-  const marquee1 = [
-    { name: "C++", logo: "https://cdn.svgporn.com/logos/c-plusplus.svg" },
-    { name: "Python", logo: "https://cdn.svgporn.com/logos/python.svg" },
-    { name: "Java", logo: "https://cdn.svgporn.com/logos/java.svg" },
-    { name: "JavaScript", logo: "https://cdn.svgporn.com/logos/javascript.svg" },
-    { name: "TypeScript", logo: "https://cdn.svgporn.com/logos/typescript-icon.svg" },
-    { name: "Dart", logo: "/dart.png" },
-    { name: "Flutter", logo: "/flutter.png" },
-    { name: "Next.js", logo: "https://cdn.svgporn.com/logos/nextjs-icon.svg" },
-    { name: "React.js", logo: "https://cdn.svgporn.com/logos/react.svg" },
-    { name: "Tailwind CSS", logo: "https://cdn.svgporn.com/logos/tailwindcss-icon.svg" },
-    { name: "HTML5", logo: "/html.svg" },
-    { name: "CSS3", logo: "/css.svg" }
-  ];
-
-  const marquee2 = [
-    { name: "Node.js", logo: "https://cdn.svgporn.com/logos/nodejs-icon.svg" },
-    { name: "Express.js", logo: "https://cdn.svgporn.com/logos/express.svg" },
-    { name: "Firebase", logo: "/firebase.png" },
-    { name: "MongoDB", logo: "https://cdn.svgporn.com/logos/mongodb-icon.svg" },
-    { name: "MySQL", logo: "/mysql.png" },
-    { name: "Redis", logo: "https://cdn.svgporn.com/logos/redis.svg" },
-    { name: "Google Cloud", logo: "/gcp.png" },
-    { name: "AWS Cloud", logo: "https://cdn.svgporn.com/logos/aws.svg" },
-    { name: "Git", logo: "https://cdn.svgporn.com/logos/git-icon.svg" },
-    { name: "GitHub", logo: "/github.svg" },
-    { name: "Data Structures (DSA)", logo: "" },
-    { name: "System Design", logo: "" },
-    { name: "REST APIs", logo: "" },
-    { name: "GraphQL", logo: "https://cdn.svgporn.com/logos/graphql.svg" },
-    { name: "Socket.IO", logo: "https://cdn.svgporn.com/logos/socket.io.svg" }
-  ];
+  const rows = portfolio.skills.rows;
+  const marquee1 = rows[0] || [];
+  const marquee2 = rows[1] || [];
 
   // Double arrays for seamless marquee looping
   const scrollRow1 = [...marquee1, ...marquee1, ...marquee1];

@@ -5,6 +5,9 @@
   },
   "skills": [
     {
+      "name": "C"
+    },
+    {
       "name": "C++"
     },
     {
@@ -20,10 +23,25 @@
       "name": "Dart"
     },
     {
-      "name": "NextJs"
+      "name": "Data Structures & Algorithms"
     },
     {
-      "name": "ReactJs"
+      "name": "OOP"
+    },
+    {
+      "name": "DBMS"
+    },
+    {
+      "name": "Operating Systems"
+    },
+    {
+      "name": "Computer Networks"
+    },
+    {
+      "name": "Next.js"
+    },
+    {
+      "name": "React.js"
     },
     {
       "name": "TypeScript"
@@ -38,19 +56,22 @@
       "name": "Flutter"
     },
     {
-      "name": "NodeJs"
-    },
-    {
-      "name": "ExpressJs"
+      "name": "Node.js"
     },
     {
       "name": "REST APIs"
     },
     {
-      "name": "GraphQl"
+      "name": "GraphQL"
     },
     {
-      "name": "Socket.IO"
+      "name": "WebSockets"
+    },
+    {
+      "name": "PostgreSQL"
+    },
+    {
+      "name": "pgvector"
     },
     {
       "name": "MySQL"
@@ -68,37 +89,28 @@
       "name": "GitHub"
     },
     {
-      "name": "Redis"
+      "name": "Docker"
     },
     {
-      "name": "Android Studio"
+      "name": "Linux"
     },
     {
-      "name": "Firebase"
-    },
-    {
-      "name": "Google Cloud"
+      "name": "GCP"
     },
     {
       "name": "AWS Cloud"
     },
     {
-      "name": "S3"
+      "name": "Redis"
     },
     {
-      "name": "Lambda)"
+      "name": "Jest"
     },
     {
-      "name": "Data Structures (DSA)"
+      "name": "Postman"
     },
     {
-      "name": "DBMS"
-    },
-    {
-      "name": "Operating Systems"
-    },
-    {
-      "name": "System Design"
+      "name": "Nginx"
     }
   ],
   "experience": [
@@ -109,16 +121,19 @@
       "location": "Singapore Remote",
       "duration": "May 2025 - Oct 2025",
       "tech": [
-        "NodeJs",
+        "Node.js",
         "Flutter",
         "Firebase",
         "GCP"
       ],
       "bullets": [
-        "Designed and implemented Instagram webhooks enabling automated creator messaging at scale. Improved an AI",
-        "Trip Guide chatbot using MCP-based architecture, reducing response latency by 20%.",
-        "Built and deployed backend services on GCP (Cloud Run, Cloud Functions) for reliable production workflows.",
-        "Integrated third-party APIs, wrote test cases, and resolved production issues to improve system stability."
+        "Automated Instagram engagement by routing webhook events through Google Cloud Functions, with the",
+        "deployed webhook handling 1M+ requests over 14 days at a 99.994% request success rate.",
+        "Built an MCP server to decouple the chatbot from backend integrations, exposing 5 reusable tools.",
+        "Secured Meta Graph API integrations with a backend proxy, removing client-side credential exposure and",
+        "centralizing authenticated requests.",
+        "Optimized the AI Trip Guide with a two-level geocoding cache using in-memory storage and Firestore",
+        "persistence, eliminating redundant external lookups and reducing API overhead during itinerary generation."
       ]
     }
   ],
@@ -126,10 +141,31 @@
     {
       "slug": "indian-institute-of-information-technologysri-city-andhra-pradesh-0",
       "institution": "Indian Institute of Information Technology, Sri City",
-      "degree": "B.Tech (CSE)",
+      "degree": "B.Tech (Hons.) in CSE - CGPA: 9.41/10.0Aug. 2023 – June 2027",
       "period": "2023 - June 2027",
-      "gpa": "9.38/10.0"
+      "gpa": "9.41/10.0"
     }
   ],
-  "achievements": []
+  "achievements": [
+    {
+      "title": "Competitive Programming",
+      "description": "Solved 500+ problems across different coding platforms, achieving a peak rating of 1887 on LeetCode and 1276 on Codeforces."
+    },
+    {
+      "title": "Flipkart GRiD 7.0",
+      "description": "Advanced to National Semi-Finals out of 100,000+ participants across India."
+    },
+    {
+      "title": "Academic Excellence Award",
+      "description": "Received thrice for maintaining an excellent CGPA."
+    },
+    {
+      "title": "Research Publications",
+      "description": "Published a paper at ICAART 2026 (CORE B-Ranked Conference), including a study on reward shaping and exploration strategies for Deep RL agents ."
+    },
+    {
+      "title": "App-a-thon 2024",
+      "description": "Won 2nd Runner-Up among 50+ teams at iLabs, Hyderabad."
+    }
+  ]
 }

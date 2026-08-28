@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from 'react';
+import { portfolio } from '@/lib/portfolio';
 
 export default function Contact() {
   const [isDarkMode, setIsDarkMode] = useState(true);
@@ -46,9 +47,9 @@ export default function Contact() {
     e.preventDefault();
     console.log('Form submitted:', formData);
     // Open email client prefilled
-    const subject = encodeURIComponent("Let's Collaborate");
+    const subject = encodeURIComponent(portfolio.contact.emailSubject);
     const body = encodeURIComponent(`Hello Vanya,\n\nMy name is ${formData.name} (${formData.email}).\n\n${formData.message}`);
-    window.open(`mailto:awasthi.v23@iiits.in?subject=${subject}&body=${body}`, '_self');
+    window.open(`mailto:${portfolio.contact.email}?subject=${subject}&body=${body}`, '_self');
   };
 
   return (
@@ -75,23 +76,19 @@ export default function Contact() {
           <div className="panel panel-muted rounded-3xl p-8 bg-[color:var(--surface-2)] border border-[color:var(--stroke)] shadow-[0_8px_30px_rgba(27,19,26,0.01)] space-y-6">
             <div>
               <span className="text-xs uppercase tracking-wider text-[color:var(--accent-rose)] font-bold">
-                Let's Work Together
+                {portfolio.contact.title}
               </span>
               <h3 className="section-title text-2xl md:text-3xl text-[color:var(--text-title)] font-bold mt-2">
-                direct line
+                {portfolio.contact.headline}
               </h3>
             </div>
             
             <p className="text-muted text-sm md:text-base leading-relaxed">
-              Open to internships, collaborations, and product work where craft and engineering meet. If you are building a product or need a technical developer, I would love to hear the story.
+              {portfolio.contact.description}
             </p>
 
             <div className="space-y-3 pt-2">
-              {[
-                'Full-stack web and Flutter apps',
-                'Product design and UX systems',
-                'Creative, technical collaboration'
-              ].map((item) => (
+              {portfolio.contact.bullets.map((item) => (
                 <div key={item} className="flex items-center gap-3">
                   <span className="text-[color:var(--accent-rose)] font-medium select-none text-sm">—</span>
                   <span className="text-muted text-sm md:text-base">{item}</span>
@@ -101,18 +98,18 @@ export default function Contact() {
 
             <div className="flex flex-wrap gap-4 pt-4">
               <a
-                href="mailto:awasthi.v23@iiits.in?subject=Let's%20Collaborate"
+                href={`mailto:${portfolio.contact.email}?subject=${encodeURIComponent(portfolio.contact.emailSubject)}`}
                 className="px-6 py-3 text-xs md:text-sm font-semibold tracking-wider uppercase rounded-full border border-[color:var(--stroke)] bg-[color:var(--surface-3)] text-[color:var(--text-primary)] hover:border-[color:var(--accent-rose)] hover:bg-[color:var(--accent-rose)]/5 transition-all duration-300"
               >
-                Email Me
+                {portfolio.contact.emailLabel}
               </a>
               <a
-                href="/resume.pdf"
+                href={portfolio.hero.resumeHref}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-6 py-3 text-xs md:text-sm font-semibold tracking-wider uppercase rounded-full border border-[color:var(--stroke)] text-[color:var(--text-primary)] hover:border-[color:var(--accent-lavender)] hover:bg-[color:var(--accent-lavender)]/5 transition-all duration-300"
               >
-                Resume
+                {portfolio.contact.resumeLabel}
               </a>
             </div>
           </div>

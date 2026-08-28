@@ -2,6 +2,7 @@
 
 import { Github, Linkedin, Mail, FileText, Sun, Moon } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import { portfolio } from '@/lib/portfolio';
 
 const SocialLinks = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -52,54 +53,41 @@ const SocialLinks = () => {
     localStorage.setItem('theme', newTheme ? 'dark' : 'light');
   };
 
-  const socialLinks = [
-    {
-      icon: <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+  const iconMap: Record<string, React.ReactNode> = {
+    home: (
+      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
         <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
-      </svg>,
-      href: "#",
-      label: "Home"
-    },
-    {
-      icon: <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-      <circle cx="12" cy="12" r="10"/>
-      <line x1="12" y1="16" x2="12" y2="12"/>
-      <circle cx="12" cy="8" r="0.5" fill="currentColor"/>
-    </svg>,
-      href: "#about",
-      label: "About"
-    },
-    {
-      icon: <Github className="w-5 h-5" />,
-      href: "https://github.com/sheisstarwithoutmoon",
-      label: "GitHub",
-      external: true
-    },
-    {
-      icon: <Linkedin className="w-5 h-5" />,
-      href: "https://www.linkedin.com/in/vanya-awasthi/",
-      label: "LinkedIn",
-      external: true
-    },
-    {
-      icon: <Mail className="w-5 h-5" />,
-      href: "mailto:awasthi.v23@iiits.in",
-      label: "Email",
-      external: true
-    },
-    {
-      icon: <FileText className="w-5 h-5" />,
-      href: "/resume.pdf",
-      label: "Resume",
-      external: true
-    },
+      </svg>
+    ),
+    about: (
+      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <circle cx="12" cy="12" r="10"/>
+        <line x1="12" y1="16" x2="12" y2="12"/>
+        <circle cx="12" cy="8" r="0.5" fill="currentColor"/>
+      </svg>
+    ),
+    github: <Github className="w-5 h-5" />,
+    linkedin: <Linkedin className="w-5 h-5" />,
+    email: <Mail className="w-5 h-5" />,
+    resume: <FileText className="w-5 h-5" />,
+  };
+
+  const socialLinks = [
+    ...portfolio.socialLinks.map((link) => ({
+      icon: iconMap[link.key] || <FileText className="w-5 h-5" />,
+      href: link.href,
+      label: link.label,
+      external: link.external,
+      onClick: undefined,
+    })),
     {
       icon: isMounted
         ? (isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />)
         : <Moon className="w-5 h-5" />,
       href: "#",
       label: isMounted ? (isDarkMode ? "Light Mode" : "Dark Mode") : "Dark Mode",
-      onClick: toggleTheme
+      onClick: toggleTheme,
+      external: undefined,
     }
   ];
 

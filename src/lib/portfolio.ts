@@ -65,32 +65,29 @@ const mergeByIndex = <T extends Record<string, unknown>>(manualItems: T[], resum
   return mergedItems;
 };
 
-const mergedExperience = mergeByIndex(portfolioData.fallback.experience, resumeData.experience);
+const mergedExperience = resumeData.experience && resumeData.experience.length > 0 
+  ? resumeData.experience 
+  : portfolioData.fallback.experience;
 
-const mergedEducation = mergeByIndex(portfolioData.fallback.education, resumeData.education);
-
-const mergedProfile = {
-  ...portfolioData.fallback.profile,
-  ...resumeData.profile,
-};
+const mergedAchievements = resumeData.achievements && resumeData.achievements.length > 0
+  ? resumeData.achievements
+  : portfolioData.fallback.achievements;
 
 export const portfolio = {
-  profile: {
-    ...mergedProfile,
-  },
+  profile: portfolioData.fallback.profile,
   hero: portfolioData.hero,
   footer: portfolioData.footer,
   contact: portfolioData.contact,
   socialLinks: portfolioData.socialLinks,
   skills: {
-    rows: mergeSkills(),
+    rows: portfolioData.skillDisplay.rows,
   },
-  projects: mergeProjects(),
+  projects: portfolioData.projects,
   research: portfolioData.research,
   leadership: portfolioData.leadership,
   experience: mergedExperience,
-  education: mergedEducation,
-  achievements: portfolioData.fallback.achievements,
+  education: portfolioData.fallback.education,
+  achievements: mergedAchievements,
 };
 
 export type AppPortfolio = typeof portfolio;

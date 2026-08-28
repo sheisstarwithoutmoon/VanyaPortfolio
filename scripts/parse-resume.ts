@@ -28,9 +28,12 @@ const headingAliases = new Map<string, string>([
   ['research work publications', 'ignored'],
   ['leadership', 'ignored'],
   ['leadership activities', 'ignored'],
-  ['honors and awards', 'ignored'],
-  ['honors awards', 'ignored'],
-  ['awards', 'ignored'],
+  ['achievements publications', 'achievements'],
+  ['achievements and publications', 'achievements'],
+  ['achievements', 'achievements'],
+  ['honors and awards', 'achievements'],
+  ['honors awards', 'achievements'],
+  ['awards', 'achievements'],
 ]);
 
 const normalize = (value: string) => value.replace(/\s+/g, ' ').trim();
@@ -264,6 +267,39 @@ const parseExperience = (sectionLines: string[]) => {
   ].filter((entry) => entry.role || entry.company);
 };
 
+const parseAchievements = (sectionLines: string[]) => {
+  const lines = sectionLines.map(normalize).filter(Boolean);
+  const bulletItems: string[] = [];
+
+  for (const line of lines) {
+    if (line.startsWith('•') || line.startsWith('-') || line.startsWith('*')) {
+      bulletItems.push(line.replace(/^[-•*]\s*/, '').trim());
+    } else {
+      if (bulletItems.length > 0) {
+        bulletItems[bulletItems.length - 1] += ' ' + line;
+      } else {
+        bulletItems.push(line);
+      }
+    }
+  }
+
+  return bulletItems.map((item) => {
+    const colonIndex = item.indexOf(':');
+    if (colonIndex === -1) {
+      return {
+        title: item,
+        description: '',
+      };
+    }
+    const title = item.slice(0, colonIndex).trim();
+    const description = item.slice(colonIndex + 1).trim();
+    return {
+      title,
+      description,
+    };
+  }).filter((item) => item.title);
+};
+
 const buildResumeData = async () => {
   const file = await fs.readFile(resumePath);
   const pdf = await pdfParse(file);
@@ -281,8 +317,9 @@ const buildResumeData = async () => {
     skills: [],
     education: [],
     experience: [],
+    achievements: [],
   };
-  const collectableSections = new Set(['skills', 'education', 'experience']);
+  const collectableSections = new Set(['skills', 'education', 'experience', 'achievements']);
 
   let currentSection: keyof typeof sections | null = null;
   const headerLines: string[] = [];
@@ -321,7 +358,7 @@ const buildResumeData = async () => {
     skills: parseSkills(sections.skills),
     experience: parseExperience(sections.experience),
     education: parseEducation(sections.education),
-    achievements: [],
+    achievements: parseAchievements(sections.achievements),
   };
 
   if (deterministic.profile.name && deterministic.skills.length > 0 && deterministic.experience.length > 0) {

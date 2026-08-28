@@ -19,7 +19,7 @@ export default function Hero() {
 
       const link = document.createElement('a');
       link.href = portfolio.hero.resumeHref;
-      link.download = 'Vanya_Awasthi_Resume.pdf';
+      link.download = portfolio.hero.resumeDownloadName;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -38,7 +38,7 @@ export default function Hero() {
       <div
         className="absolute inset-0 z-0 pointer-events-none overflow-hidden"
         style={{
-          backgroundImage: "url('/pink.png')",
+          backgroundImage: `url('${portfolio.hero.backgroundImage}')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
@@ -55,20 +55,20 @@ export default function Hero() {
             
             <div className="space-y-4 w-full">
               <div className="handwritten text-4xl md:text-5xl font-normal text-[color:var(--text-title)] tracking-wide">
-                hi, i'm
+                {portfolio.hero.greeting}
               </div>
-              <h1 className="hero-name text-6xl md:text-7xl lg:text-8xl leading-none text-[color:var(--text-title)] font-bold">
-                vanya awasthi
+              <h1 className="hero-name text-6xl md:text-7xl lg:text-8xl leading-none text-[color:var(--text-title)] font-bold lowercase">
+                {portfolio.hero.name}
               </h1>
               <div className="text-xs md:text-sm uppercase tracking-[0.28em] text-muted font-semibold mt-2">
-                developer · problem solver · researcher
+                {portfolio.hero.headline}
               </div>
             </div>
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto pt-2">
               <a
-                href="mailto:awasthi.v23@iiits.in?subject=Let's%20Collaborate"
+                href={`mailto:${portfolio.contact.email}?subject=${encodeURIComponent(portfolio.contact.emailSubject)}`}
                 className="btn-primary px-8 py-3.5 rounded-full text-xs md:text-sm font-semibold uppercase tracking-wider text-center"
               >
                 Get in Touch
@@ -102,8 +102,8 @@ export default function Hero() {
           <div className="hero-fade-in flex justify-center lg:justify-end items-center mt-8 lg:mt-0">
             <div className="relative">
               <img
-                src="/van.jpeg"
-                alt="Vanya Awasthi portrait"
+                src={portfolio.hero.portrait}
+                alt={`${portfolio.hero.name} portrait`}
                 className="w-64 sm:w-72 md:w-80 lg:w-[23rem] aspect-[4/5] object-cover rounded-3xl shadow-lg border border-[color:var(--stroke)]"
               />
               <Sticker

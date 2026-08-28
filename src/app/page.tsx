@@ -7,6 +7,7 @@ import Projects from "@/components/Projects";
 import Leadership from "@/components/Leadership";
 import Achievements from "@/components/Achievements";
 import SocialLinks from "@/components/SocialLinks";
+import { portfolio } from "@/lib/portfolio";
 
 export default function Home() {
   return (
@@ -38,8 +39,8 @@ export default function Home() {
       </div>
       
       <footer className="w-full text-center py-10 pb-32 text-xs font-medium tracking-wide text-muted/50 space-y-1.5 select-none">
-        <p>Built and designed by Vanya Awasthi.</p>
-        <p>All rights reserved. ©</p>
+        <p>{portfolio.footer.line1}</p>
+        <p>{portfolio.footer.line2}</p>
       </footer>
 
       <SocialLinks />

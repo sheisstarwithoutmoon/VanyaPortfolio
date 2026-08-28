@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from 'react';
 import Sticker from './Sticker';
+import { portfolio } from '@/lib/portfolio';
 
 export default function About() {
   const [isDarkMode, setIsDarkMode] = useState(true);
@@ -61,7 +62,7 @@ export default function About() {
             </div>
             
             <p className="section-lead text-muted text-lg leading-relaxed">
-              I'm a third year CSE undergrad at IIIT Sri City who enjoys building things and understanding how systems work behind the scenes. I like stepping into new domains and figuring things out as I go. I'd say I'm a curious learner and fairly adaptable. I enjoy taking on problems that are new to me and learning whatever is needed to solve them.
+              {portfolio.profile.summary}
             </p>
           </div>
 
@@ -75,35 +76,45 @@ export default function About() {
               <div className="h-[1px] w-full bg-gradient-to-r from-[color:var(--stroke)] to-transparent" />
             </div>
 
-            <div className="space-y-3">
-              <div>
-                <h3 className="section-title text-xl md:text-2xl text-[color:var(--text-title)] font-bold leading-tight">
-                  <a 
-                    href={'https://www.iiits.ac.in/'} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="hover:text-[color:var(--accent-rose)] hover:underline hover:underline-offset-4 transition duration-300"
-                  >
-                    Indian Institute of Information Technology, Sri City
-                  </a>
-                </h3>
-                <p className="text-muted text-base font-semibold mt-2">
-                  B.Tech (Honors) in Computer Science & Engineering
-                </p>
-              </div>
-              
-              <div className="flex flex-wrap items-center justify-between gap-4 pt-1">
-                <span className="text-[color:var(--text-primary)] font-medium text-sm">
-                  Aug. 2023 - June 2027
-                </span>
+            {portfolio.education.map((edu, idx) => (
+              <div key={edu.slug || idx} className="space-y-3">
+                <div>
+                  <h3 className="section-title text-xl md:text-2xl text-[color:var(--text-title)] font-bold leading-tight">
+                    {edu.url ? (
+                      <a 
+                        href={edu.url} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="hover:text-[color:var(--accent-rose)] hover:underline hover:underline-offset-4 transition duration-300"
+                      >
+                        {edu.institution}
+                      </a>
+                    ) : (
+                      edu.institution
+                    )}
+                  </h3>
+                  <p className="text-muted text-base font-semibold mt-2">
+                    {edu.degree}
+                  </p>
+                </div>
                 
-                <div className="flex items-center gap-1 text-sm font-medium text-[color:var(--text-primary)]">
-                  <span>CGPA:</span>
-                  <span className="font-bold text-[color:var(--accent-rose)]">9.38</span>
-                  <span>/ 10.0</span>
+                <div className="flex flex-wrap items-center justify-between gap-4 pt-1">
+                  <span className="text-[color:var(--text-primary)] font-medium text-sm">
+                    {edu.period}
+                  </span>
+                  
+                  {edu.gpa && (
+                    <div className="flex items-center gap-1 text-sm font-medium text-[color:var(--text-primary)]">
+                      <span>CGPA:</span>
+                      <span className="font-bold text-[color:var(--accent-rose)]">
+                        {edu.gpa.includes('/') ? edu.gpa.split('/')[0].trim() : edu.gpa}
+                      </span>
+                      {edu.gpa.includes('/') && <span>/ {edu.gpa.split('/')[1].trim()}</span>}
+                    </div>
+                  )}
                 </div>
               </div>
-            </div>
+            ))}
           </div>
 
         </div>
