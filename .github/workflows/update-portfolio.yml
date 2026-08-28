@@ -37,4 +37,4 @@ jobs:
       - name: Deploy static export to Vercel
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-        run: vercel deploy ./out --prod --token "$VERCEL_TOKEN"
+        run: vercel deploy ./out --prod --token "$VERCEL_TOKEN" --yes
