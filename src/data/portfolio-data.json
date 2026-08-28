@@ -1,0 +1,209 @@
+{
+  "hero": {
+    "greeting": "hi, i'm",
+    "name": "Vanya Awasthi",
+    "headline": "developer · problem solver · researcher",
+    "portrait": "/van.jpeg",
+    "backgroundImage": "/pink.png",
+    "resumeHref": "/resume.pdf",
+    "resumeDownloadName": "Vanya_Awasthi_Resume.pdf"
+  },
+  "footer": {
+    "line1": "Built and designed by Vanya Awasthi.",
+    "line2": "All rights reserved. ©"
+  },
+  "contact": {
+    "title": "Let's Work Together",
+    "headline": "direct line",
+    "description": "Open to internships, collaborations, and product work where craft and engineering meet. If you are building a product or need a technical developer, I would love to hear the story.",
+    "bullets": [
+      "Full-stack web and Flutter apps",
+      "Product design and UX systems",
+      "Creative, technical collaboration"
+    ],
+    "emailLabel": "Email Me",
+    "resumeLabel": "Resume",
+    "emailSubject": "Let's Collaborate",
+    "email": "awasthi.v23@iiits.in"
+  },
+  "socialLinks": [
+    { "key": "home", "label": "Home", "href": "#top", "external": false },
+    { "key": "about", "label": "About", "href": "#about", "external": false },
+    { "key": "github", "label": "GitHub", "href": "https://github.com/sheisstarwithoutmoon", "external": true },
+    { "key": "linkedin", "label": "LinkedIn", "href": "https://www.linkedin.com/in/vanya-awasthi/", "external": true },
+    { "key": "email", "label": "Email", "href": "mailto:awasthi.v23@iiits.in", "external": true },
+    { "key": "resume", "label": "Resume", "href": "/resume.pdf", "external": true }
+  ],
+  "skillDisplay": {
+    "rows": [
+      [
+        { "name": "C++", "logo": "https://cdn.svgporn.com/logos/c-plusplus.svg" },
+        { "name": "Python", "logo": "https://cdn.svgporn.com/logos/python.svg" },
+        { "name": "Java", "logo": "https://cdn.svgporn.com/logos/java.svg" },
+        { "name": "JavaScript", "logo": "https://cdn.svgporn.com/logos/javascript.svg" },
+        { "name": "TypeScript", "logo": "https://cdn.svgporn.com/logos/typescript-icon.svg" },
+        { "name": "Dart", "logo": "/dart.png" },
+        { "name": "Flutter", "logo": "/flutter.png" },
+        { "name": "Next.js", "logo": "https://cdn.svgporn.com/logos/nextjs-icon.svg" },
+        { "name": "React.js", "logo": "https://cdn.svgporn.com/logos/react.svg" },
+        { "name": "Tailwind CSS", "logo": "https://cdn.svgporn.com/logos/tailwindcss-icon.svg" },
+        { "name": "HTML5", "logo": "/html.svg" },
+        { "name": "CSS3", "logo": "/css.svg" }
+      ],
+      [
+        { "name": "Node.js", "logo": "https://cdn.svgporn.com/logos/nodejs-icon.svg" },
+        { "name": "Express.js", "logo": "https://cdn.svgporn.com/logos/express.svg" },
+        { "name": "Firebase", "logo": "/firebase.png" },
+        { "name": "MongoDB", "logo": "https://cdn.svgporn.com/logos/mongodb-icon.svg" },
+        { "name": "MySQL", "logo": "/mysql.png" },
+        { "name": "Redis", "logo": "https://cdn.svgporn.com/logos/redis.svg" },
+        { "name": "Google Cloud", "logo": "/gcp.png" },
+        { "name": "AWS Cloud", "logo": "https://cdn.svgporn.com/logos/aws.svg" },
+        { "name": "Git", "logo": "https://cdn.svgporn.com/logos/git-icon.svg" },
+        { "name": "GitHub", "logo": "/github.svg" },
+        { "name": "Data Structures (DSA)" },
+        { "name": "System Design" },
+        { "name": "REST APIs" },
+        { "name": "GraphQL", "logo": "https://cdn.svgporn.com/logos/graphql.svg" },
+        { "name": "Socket.IO", "logo": "https://cdn.svgporn.com/logos/socket.io.svg" }
+      ]
+    ]
+  },
+  "projects": [
+    {
+      "slug": "milestone",
+      "title": "Milestone",
+      "description": "Digital talent marketplace designed to help organizations hire qualified freelance professionals faster with greater transparency and streamlined collaboration. The platform supports the complete engagement lifecycle including job posting, candidate discovery, structured application screening, milestone-based project management, secure payments, and post-engagement feedback.",
+      "image": "/images/portfolio/milestone.png",
+      "tech": "React.js • Node.js • Redis • MongoDB • Jest • Docker • Nginx",
+      "github": "https://github.com/amanraj069/Milestone-frontend",
+      "live": "https://milestone-aman-raj.vercel.app"
+    },
+    {
+      "slug": "cove",
+      "title": "Cove",
+      "description": "Research platform designed for students, researchers, and builders who need trustworthy academic references without wasting hours filtering noisy AI-generated results. Cove focuses on delivering relevant citations, verified sources, and concise research workflows while avoiding hallucinated references and unnecessary deep-research clutter common in modern AI tools.",
+      "image": "/images/portfolio/cove.png",
+      "tech": "React.js • Node.js • Firebase • Groq • Travily",
+      "github": "https://github.com/sheisstarwithoutmoon/cove",
+      "live": "https://cove-azure.vercel.app"
+    },
+    {
+      "slug": "quickart",
+      "title": "Quickart",
+      "description": "Full-stack essentials delivery platform integrated with AI-powered prescription reading, visual product search, and conversational shopping assistance. Built with a strong focus on seamless UX, real-time inventory management, and smart recommendation workflows.",
+      "image": "/images/portfolio/quickart1.png",
+      "tech": "Next.js • TypeScript • Tailwind CSS • Firebase • Genkit • Groq API",
+      "github": "https://github.com/sheisstarwithoutmoon/Quic-kart",
+      "live": "https://quic-kart-five.vercel.app/"
+    }
+  ],
+  "research": [
+    {
+      "title": "A Lightweight Reinforcement Learning Framework for Othello Agents: Exploring Reward Shaping and Efficient Exploration",
+      "conference": "ICAART 2026 — Published",
+      "badge": "B-Ranked Conference",
+      "description": "Designed a high-performance, lightweight TD-learning architecture optimized for training competitive gameplay agents without heavy GPU resources. Investigated custom reward shaping formulas and exploration strategies to solve sparse-reward states in grid-board tactics.",
+      "tech": "TD-Learning • Reward Shaping • Exploration Strategy • Game AI",
+      "link": "https://www.scitepress.org/Link.aspx?doi=10.5220/0014326900004052"
+    },
+    {
+      "title": "Autonomous Control for Reusable Rocket Landing: Deriving a Robust Guidance through Deep Reinforcement Learning in a Custom 3D Simulation Environment",
+      "conference": "ICAART 2026 — Published",
+      "badge": "B-Ranked Conference",
+      "description": "Developed an autonomous control guidance framework in a custom-built 3D physical environment simulating vertical descent dynamics of rocket landing stages. Formulated robust deep reinforcement learning policies to calculate precise landing controls under adverse drag conditions.",
+      "tech": "Deep Reinforcement Learning • 3D Simulation • Control Systems • Rocket Guidance",
+      "link": "https://www.scitepress.org/Link.aspx?doi=10.5220/0014326200004052"
+    }
+  ],
+  "leadership": [
+    {
+      "title": "Lead Organizer",
+      "organization": "GDG on Campus (IIIT Sri City)",
+      "duration": "Sept 2025 - June 2026",
+      "bullets": [
+        "Served as the GDG on Campus Lead at IIIT Sri City, fostering tech awareness and practical learning on campus.",
+        "Led strategic technical initiatives, including the Google Cloud Jam, achieving over 100+ program completions.",
+        "Organized 8+ technical workshops and collaborative campus hackathons, bringing hands-on engineering challenges directly to peers."
+      ]
+    }
+  ],
+  "fallback": {
+    "profile": {
+      "name": "Vanya Awasthi",
+      "headline": "developer · problem solver · researcher",
+      "summary": "I'm a third year CSE undergrad at IIIT Sri City who enjoys building things and understanding how systems work behind the scenes. I like stepping into new domains and figuring things out as I go. I'd say I'm a curious learner and fairly adaptable. I enjoy taking on problems that are new to me and learning whatever is needed to solve them.",
+      "email": "awasthi.v23@iiits.in",
+      "location": "IIIT Sri City",
+      "github": "https://github.com/sheisstarwithoutmoon",
+      "linkedin": "https://www.linkedin.com/in/vanya-awasthi/"
+    },
+    "skills": [
+      { "name": "C++" },
+      { "name": "Python" },
+      { "name": "Java" },
+      { "name": "JavaScript" },
+      { "name": "TypeScript" },
+      { "name": "Dart" },
+      { "name": "Flutter" },
+      { "name": "Next.js" },
+      { "name": "React.js" },
+      { "name": "Tailwind CSS" },
+      { "name": "HTML5" },
+      { "name": "CSS3" },
+      { "name": "Node.js" },
+      { "name": "Express.js" },
+      { "name": "Firebase" },
+      { "name": "MongoDB" },
+      { "name": "MySQL" },
+      { "name": "Redis" },
+      { "name": "Google Cloud" },
+      { "name": "AWS Cloud" },
+      { "name": "Git" },
+      { "name": "GitHub" },
+      { "name": "Data Structures (DSA)" },
+      { "name": "System Design" },
+      { "name": "REST APIs" },
+      { "name": "GraphQL" },
+      { "name": "Socket.IO" }
+    ],
+    "experience": [
+      {
+        "slug": "hoffero",
+        "role": "SDE Intern",
+        "company": "Hoffero",
+        "location": "Singapore (Remote)",
+        "duration": "MAY 2025 - OCT 2025",
+        "tech": ["Node.js", "Flutter", "Firebase", "GCP"],
+        "bullets": [
+          "Designed and implemented Instagram webhooks enabling automated creator messaging at scale, helping hotels and creators coordinate seamlessly.",
+          "Improved an AI Trip Guide chatbot using Model Context Protocol (MCP) architecture, decreasing response latency by 20%.",
+          "Built and deployed scalable backend microservices on Google Cloud Platform using GCP Cloud Run and Cloud Functions to achieve reliable, automated production workflows.",
+          "Integrated multiple third-party APIs, structured unit and integration tests, and resolved high-priority production bugs to boost overall server stability."
+        ]
+      }
+    ],
+    "education": [
+      {
+        "slug": "iiit-sricity",
+        "institution": "Indian Institute of Information Technology, Sri City",
+        "degree": "B.Tech in Computer Science & Engineering (Honors)",
+        "period": "Aug. 2023 - June 2027",
+        "gpa": "9.38 / 10.0",
+        "url": "https://www.iiits.ac.in/"
+      }
+    ],
+    "projects": [],
+    "certifications": [],
+    "achievements": [
+      {
+        "title": "Flipkart GRiD 7.0 Semifinalist",
+        "description": "Qualified as National Semifinalist in Flipkart GRiD 7.0"
+      },
+      {
+        "title": "Academic Excellence Award",
+        "description": "Received twice in recognition of outstanding academic performance and maintaining an exceptional GPA."
+      }
+    ]
+  }
+}

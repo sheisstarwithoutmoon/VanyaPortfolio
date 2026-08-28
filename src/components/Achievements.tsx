@@ -1,6 +1,12 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import { Award } from 'lucide-react';
+import { portfolio } from '@/lib/portfolio';
+
+type AchievementItem = {
+  title: string;
+  description: string;
+};
 
 export default function Achievements() {
   const [isDarkMode, setIsDarkMode] = useState(true);
@@ -30,16 +36,7 @@ export default function Achievements() {
     return () => observer.disconnect();
   }, []);
 
-  const achievements = [
-    {
-      title: "Flipkart GRiD 7.0 Semifinalist",
-      description: "Qualified as National Semifinalist in Flipkart GRiD 7.0"
-    },
-    {
-      title: "Academic Excellence Award",
-      description: "Received twice in recognition of outstanding academic performance and maintaining an exceptional GPA."
-    }
-  ];
+  const achievements = portfolio.achievements as AchievementItem[];
 
   return (
     <section 

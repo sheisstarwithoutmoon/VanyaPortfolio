@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Sticker from './Sticker';
 import { Github, ExternalLink, Folder, ChevronLeft, ChevronRight } from 'lucide-react';
+import { portfolio } from '@/lib/portfolio';
 
 export default function Projects() {
   const [isDarkMode, setIsDarkMode] = useState(true);
@@ -31,32 +32,7 @@ export default function Projects() {
     return () => observer.disconnect();
   }, []);
 
-  const projects = [
-    {
-      title: "Milestone",
-      description: "Digital talent marketplace designed to help organizations hire qualified freelance professionals faster with greater transparency and streamlined collaboration. The platform supports the complete engagement lifecycle including job posting, candidate discovery, structured application screening, milestone-based project management, secure payments, and post-engagement feedback.",
-      image: "/images/portfolio/milestone.png",
-      tech: "React.js • Node.js • Redis • MongoDB • Jest • Docker • Nginx",
-      github: "https://github.com/amanraj069/Milestone-frontend",
-      live: "https://milestone-aman-raj.vercel.app"
-    },
-    {
-      title: "Cove",
-      description: "Research platform designed for students, researchers, and builders who need trustworthy academic references without wasting hours filtering noisy AI-generated results. Cove focuses on delivering relevant citations, verified sources, and concise research workflows while avoiding hallucinated references and unnecessary deep-research clutter common in modern AI tools.",
-      image: "/images/portfolio/cove.png",
-      tech: "React.js • Node.js • Firebase • Groq • Travily",
-      github: "https://github.com/sheisstarwithoutmoon/cove",
-      live: "https://cove-azure.vercel.app"
-    },
-    {
-      title: "Quickart",
-      description: "Full-stack essentials delivery platform integrated with AI-powered prescription reading, visual product search, and conversational shopping assistance. Built with a strong focus on seamless UX, real-time inventory management, and smart recommendation workflows.",
-      image: "/images/portfolio/quickart1.png",
-      tech: "Next.js • TypeScript • Tailwind CSS • Firebase • Genkit • Groq API",
-      github: "https://github.com/sheisstarwithoutmoon/Quic-kart",
-      live: "https://quic-kart-five.vercel.app/"
-    }
-  ];
+  const projects = portfolio.projects;
 
   const [activeIndex, setActiveIndex] = useState(0);
 

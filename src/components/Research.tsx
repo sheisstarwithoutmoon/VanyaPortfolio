@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import { BookOpen } from 'lucide-react';
+import { portfolio } from '@/lib/portfolio';
 
 export default function Research() {
   const [isDarkMode, setIsDarkMode] = useState(true);
@@ -29,24 +30,7 @@ export default function Research() {
     return () => observer.disconnect();
   }, []);
 
-  const papers = [
-    {
-      title: "A Lightweight Reinforcement Learning Framework for Othello Agents: Exploring Reward Shaping and Efficient Exploration",
-      conference: "ICAART 2026 — Published",
-      badge: "B-Ranked Conference",
-      description: "Designed a high-performance, lightweight TD-learning architecture optimized for training competitive gameplay agents without heavy GPU resources. Investigated custom reward shaping formulas and exploration strategies to solve sparse-reward states in grid-board tactics.",
-      tech: "TD-Learning • Reward Shaping • Exploration Strategy • Game AI",
-      link: "https://www.scitepress.org/Link.aspx?doi=10.5220/0014326900004052"
-    },
-    {
-      title: "Autonomous Control for Reusable Rocket Landing: Deriving a Robust Guidance through Deep Reinforcement Learning in a Custom 3D Simulation Environment",
-      conference: "ICAART 2026 — Published",
-      badge: "B-Ranked Conference",
-      description: "Developed an autonomous control guidance framework in a custom-built 3D physical environment simulating vertical descent dynamics of rocket landing stages. Formulated robust deep reinforcement learning policies to calculate precise landing controls under adverse drag conditions.",
-      tech: "Deep Reinforcement Learning • 3D Simulation • Control Systems • Rocket Guidance",
-      link: "https://www.scitepress.org/Link.aspx?doi=10.5220/0014326200004052"
-    }
-  ];
+  const papers = portfolio.research;
 
   return (
     <section 

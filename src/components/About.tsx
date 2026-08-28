@@ -79,7 +79,7 @@ export default function About() {
               <div>
                 <h3 className="section-title text-xl md:text-2xl text-[color:var(--text-title)] font-bold leading-tight">
                   <a 
-                    href="https://www.iiits.ac.in/" 
+                    href={'https://www.iiits.ac.in/'} 
                     target="_blank" 
                     rel="noopener noreferrer" 
                     className="hover:text-[color:var(--accent-rose)] hover:underline hover:underline-offset-4 transition duration-300"
@@ -88,7 +88,7 @@ export default function About() {
                   </a>
                 </h3>
                 <p className="text-muted text-base font-semibold mt-2">
-                  B.Tech in Computer Science & Engineering (Honors)
+                  B.Tech (Honors) in Computer Science & Engineering
                 </p>
               </div>
               

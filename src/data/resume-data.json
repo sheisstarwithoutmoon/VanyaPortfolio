@@ -1,0 +1,135 @@
+{
+  "profile": {
+    "name": "Vanya Awasthi",
+    "email": "awasthi.v23@iiits.in"
+  },
+  "skills": [
+    {
+      "name": "C++"
+    },
+    {
+      "name": "Python"
+    },
+    {
+      "name": "Java"
+    },
+    {
+      "name": "JavaScript"
+    },
+    {
+      "name": "Dart"
+    },
+    {
+      "name": "NextJs"
+    },
+    {
+      "name": "ReactJs"
+    },
+    {
+      "name": "TypeScript"
+    },
+    {
+      "name": "HTML"
+    },
+    {
+      "name": "CSS"
+    },
+    {
+      "name": "Flutter"
+    },
+    {
+      "name": "NodeJs"
+    },
+    {
+      "name": "ExpressJs"
+    },
+    {
+      "name": "REST APIs"
+    },
+    {
+      "name": "GraphQl"
+    },
+    {
+      "name": "Socket.IO"
+    },
+    {
+      "name": "MySQL"
+    },
+    {
+      "name": "MongoDB"
+    },
+    {
+      "name": "Firebase Firestore"
+    },
+    {
+      "name": "Git"
+    },
+    {
+      "name": "GitHub"
+    },
+    {
+      "name": "Redis"
+    },
+    {
+      "name": "Android Studio"
+    },
+    {
+      "name": "Firebase"
+    },
+    {
+      "name": "Google Cloud"
+    },
+    {
+      "name": "AWS Cloud"
+    },
+    {
+      "name": "S3"
+    },
+    {
+      "name": "Lambda)"
+    },
+    {
+      "name": "Data Structures (DSA)"
+    },
+    {
+      "name": "DBMS"
+    },
+    {
+      "name": "Operating Systems"
+    },
+    {
+      "name": "System Design"
+    }
+  ],
+  "experience": [
+    {
+      "slug": "sde-intern-0",
+      "role": "SDE Intern",
+      "company": "Hoffero TravTech LLP",
+      "location": "Singapore Remote",
+      "duration": "May 2025 - Oct 2025",
+      "tech": [
+        "NodeJs",
+        "Flutter",
+        "Firebase",
+        "GCP"
+      ],
+      "bullets": [
+        "Designed and implemented Instagram webhooks enabling automated creator messaging at scale. Improved an AI",
+        "Trip Guide chatbot using MCP-based architecture, reducing response latency by 20%.",
+        "Built and deployed backend services on GCP (Cloud Run, Cloud Functions) for reliable production workflows.",
+        "Integrated third-party APIs, wrote test cases, and resolved production issues to improve system stability."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "slug": "indian-institute-of-information-technologysri-city-andhra-pradesh-0",
+      "institution": "Indian Institute of Information Technology, Sri City",
+      "degree": "B.Tech (CSE)",
+      "period": "2023 - June 2027",
+      "gpa": "9.38/10.0"
+    }
+  ],
+  "achievements": []
+}

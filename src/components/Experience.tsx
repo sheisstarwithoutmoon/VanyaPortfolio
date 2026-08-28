@@ -1,8 +1,9 @@
 "use client";
 import React, { useState, useEffect } from 'react';
+import { portfolio } from '@/lib/portfolio';
 
 export default function Experience() {
-  const [activeTab, setActiveTab] = useState('hoffero');
+  const [activeTab, setActiveTab] = useState(portfolio.experience[0]?.slug || '');
   const [isDarkMode, setIsDarkMode] = useState(true);
 
   useEffect(() => {
@@ -29,21 +30,8 @@ export default function Experience() {
     return () => observer.disconnect();
   }, []);
 
-  const experienceData = {
-    hoffero: {
-      role: "SDE Intern",
-      company: "Hoffero",
-      location: "Singapore (Remote)",
-      duration: "MAY 2025 - OCT 2025",
-      tech: ["Node.js", "Flutter", "Firebase", "GCP"],
-      bullets: [
-        "Designed and implemented Instagram webhooks enabling automated creator messaging at scale, helping hotels and creators coordinate seamlessly.",
-        "Improved an AI Trip Guide chatbot using Model Context Protocol (MCP) architecture, decreasing response latency by 20%.",
-        "Built and deployed scalable backend microservices on Google Cloud Platform using GCP Cloud Run and Cloud Functions to achieve reliable, automated production workflows.",
-        "Integrated multiple third-party APIs, structured unit and integration tests, and resolved high-priority production bugs to boost overall server stability."
-      ]
-    }
-  };
+  const experienceData = portfolio.experience;
+  const activeExperience = experienceData.find((entry) => entry.slug === activeTab) ?? experienceData[0];
 
   return (
     <section 
@@ -67,16 +55,19 @@ export default function Experience() {
           
           {/* Tabs Menu (Left side) */}
           <div className="flex md:flex-col border-b md:border-b-0 md:border-l border-[color:var(--stroke)] overflow-x-auto md:overflow-x-visible">
-            <button
-               onClick={() => setActiveTab('hoffero')}
-              className={`px-5 py-3 text-left font-bold text-sm tracking-wider uppercase transition-all duration-300 md:border-l-2 -ml-[1px] shrink-0 ${
-                activeTab === 'hoffero'
-                  ? 'text-[color:var(--accent-rose)] border-[color:var(--accent-rose)] bg-[color:var(--accent-rose)]/5 md:bg-transparent'
-                  : 'text-muted border-transparent hover:text-[color:var(--text-primary)]'
-              }`}
-            >
-              Hoffero
-            </button>
+            {experienceData.map((entry) => (
+              <button
+                key={entry.slug}
+                onClick={() => setActiveTab(entry.slug)}
+                className={`px-5 py-3 text-left font-bold text-sm tracking-wider uppercase transition-all duration-300 md:border-l-2 -ml-[1px] shrink-0 ${
+                  activeTab === entry.slug
+                    ? 'text-[color:var(--accent-rose)] border-[color:var(--accent-rose)] bg-[color:var(--accent-rose)]/5 md:bg-transparent'
+                    : 'text-muted border-transparent hover:text-[color:var(--text-primary)]'
+                }`}
+              >
+                {entry.company}
+              </button>
+            ))}
           </div>
 
           {/* Details Content (Right side) */}
@@ -84,12 +75,12 @@ export default function Experience() {
             <div>
               <h3 className="section-title text-2xl md:text-3xl text-[color:var(--text-title)] font-bold">
                 <a 
-                  href="/resume.pdf" 
+                  href={portfolio.hero.resumeHref} 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="hover:underline"
                 >
-                  {experienceData[activeTab as keyof typeof experienceData].role}
+                  {activeExperience?.role}
                 </a>{" "}
                 <span className="text-[color:var(--accent-rose)]">
                   @ <a 
@@ -98,18 +89,18 @@ export default function Experience() {
                     rel="noopener noreferrer" 
                     className="hover:underline"
                   >
-                    {experienceData[activeTab as keyof typeof experienceData].company}
+                    {activeExperience?.company}
                   </a>
                 </span>
               </h3>
               <p className="text-xs font-semibold tracking-wider text-muted uppercase mt-2">
-                {experienceData[activeTab as keyof typeof experienceData].duration}
+                {activeExperience?.duration}
               </p>
             </div>
 
             {/* Bullets */}
             <ul className="space-y-4 text-muted text-sm md:text-base leading-relaxed list-disc pl-5">
-              {experienceData[activeTab as keyof typeof experienceData].bullets.map((bullet, idx) => (
+              {activeExperience?.bullets.map((bullet, idx) => (
                 <li key={idx}>
                   {bullet}
                 </li>

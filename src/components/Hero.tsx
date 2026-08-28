@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import Sticker from './Sticker';
+import { portfolio } from '@/lib/portfolio';
 
 export default function Hero() {
   const [isDownloading, setIsDownloading] = useState(false);
@@ -10,14 +11,14 @@ export default function Hero() {
     setIsDownloading(true);
     
     try {
-      const response = await fetch('/resume.pdf', { method: 'HEAD' });
+      const response = await fetch(portfolio.hero.resumeHref, { method: 'HEAD' });
       
       if (!response.ok) {
         throw new Error('Resume file not found');
       }
 
       const link = document.createElement('a');
-      link.href = '/resume.pdf';
+      link.href = portfolio.hero.resumeHref;
       link.download = 'Vanya_Awasthi_Resume.pdf';
       document.body.appendChild(link);
       link.click();
