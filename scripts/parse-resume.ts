@@ -74,11 +74,34 @@ const splitBlocks = (lines: string[]) => {
   return blocks;
 };
 
-const toBulletList = (lines: string[]) =>
-  lines
-    .flatMap((line) => line.split(/[•|]/g))
-    .map((item) => item.replace(/^[-*]\s*/, '').trim())
-    .filter(Boolean);
+const toBulletList = (lines: string[]) => {
+  const bulletItems: string[] = [];
+
+  for (const line of lines) {
+    const trimmed = line.trim();
+    if (!trimmed) continue;
+
+    // Check if the line is just a bullet or starts with a bullet
+    const isBulletLine = trimmed === '•' || trimmed === '-' || trimmed === '*' || /^[-•*]\s+/.test(trimmed);
+
+    if (isBulletLine) {
+      const content = trimmed.replace(/^[-•*]\s*/, '').trim();
+      bulletItems.push(content);
+    } else {
+      if (bulletItems.length > 0) {
+        if (!bulletItems[bulletItems.length - 1]) {
+          bulletItems[bulletItems.length - 1] = trimmed;
+        } else {
+          bulletItems[bulletItems.length - 1] += ' ' + trimmed;
+        }
+      } else {
+        bulletItems.push(trimmed);
+      }
+    }
+  }
+
+  return bulletItems.filter(Boolean);
+};
 
 const extractEmail = (text: string) => text.match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i)?.[0];
 
@@ -268,20 +291,7 @@ const parseExperience = (sectionLines: string[]) => {
 };
 
 const parseAchievements = (sectionLines: string[]) => {
-  const lines = sectionLines.map(normalize).filter(Boolean);
-  const bulletItems: string[] = [];
-
-  for (const line of lines) {
-    if (line.startsWith('•') || line.startsWith('-') || line.startsWith('*')) {
-      bulletItems.push(line.replace(/^[-•*]\s*/, '').trim());
-    } else {
-      if (bulletItems.length > 0) {
-        bulletItems[bulletItems.length - 1] += ' ' + line;
-      } else {
-        bulletItems.push(line);
-      }
-    }
-  }
+  const bulletItems = toBulletList(sectionLines);
 
   return bulletItems.map((item) => {
     const colonIndex = item.indexOf(':');

@@ -127,13 +127,10 @@
         "GCP"
       ],
       "bullets": [
-        "Automated Instagram engagement by routing webhook events through Google Cloud Functions, with the",
-        "deployed webhook handling 1M+ requests over 14 days at a 99.994% request success rate.",
+        "Automated Instagram engagement by routing webhook events through Google Cloud Functions, with the deployed webhook handling 1M+ requests over 14 days at a 99.994% request success rate.",
         "Built an MCP server to decouple the chatbot from backend integrations, exposing 5 reusable tools.",
-        "Secured Meta Graph API integrations with a backend proxy, removing client-side credential exposure and",
-        "centralizing authenticated requests.",
-        "Optimized the AI Trip Guide with a two-level geocoding cache using in-memory storage and Firestore",
-        "persistence, eliminating redundant external lookups and reducing API overhead during itinerary generation."
+        "Secured Meta Graph API integrations with a backend proxy, removing client-side credential exposure and centralizing authenticated requests.",
+        "Optimized the AI Trip Guide with a two-level geocoding cache using in-memory storage and Firestore persistence, eliminating redundant external lookups and reducing API overhead during itinerary generation."
       ]
     }
   ],
