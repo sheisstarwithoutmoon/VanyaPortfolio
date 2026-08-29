@@ -13,6 +13,7 @@
   --surface-2: rgba(248, 248, 248, 0.85);
   --surface-3: rgba(240, 240, 240, 0.8);
   --stroke: rgba(0, 0, 0, 0.08);
+  --card-border: #120b11; /* crisp black border in light mode */
   --accent-rose: #d33b65; /* highly legible deep rose in light mode */
   --accent-lavender: #7d32a8; /* highly legible rich lavender in light mode */
   --accent-cream: #ffffff;
@@ -35,6 +36,7 @@
   --surface-2: rgba(36, 24, 33, 0.75);
   --surface-3: rgba(43, 29, 39, 0.6);
   --stroke: rgba(255, 255, 255, 0.08);
+  --card-border: rgba(255, 255, 255, 0.22); /* crisp subtle border in dark mode */
   --accent-rose: #e89ab4; /* original soft rose in dark mode */
   --accent-lavender: #c8a2d6; /* original soft lavender in dark mode */
   --accent-cream: #120b11;
@@ -538,18 +540,18 @@ html {
     linear-gradient(180deg, rgba(12, 8, 11, 0.2), rgba(12, 8, 11, 1)) !important;
 }
 
-/* Clean Neobrutalism / Bento UI card styling */
+/* Clean Bento Card Styling (Crisp Black/Contrasting Border) */
 .neo-card {
   background-color: var(--surface-2);
-  border: 1.5px solid var(--text-primary);
-  box-shadow: 4px 4px 0px var(--text-primary);
+  border: 1px solid var(--card-border);
+  box-shadow: 0 8px 30px rgba(27, 19, 26, 0.02);
   border-radius: 24px;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .neo-card:hover {
-  transform: translate(-1px, -1px);
-  box-shadow: 5px 5px 0px var(--text-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 40px rgba(27, 19, 26, 0.08);
 }
 
 .highlight-rose {
@@ -567,14 +569,15 @@ html {
    Leadership Photo Collage
    ======================================== */
 .leadership-photo {
-  border-radius: 16px;
-  border: 2px solid var(--text-primary);
-  box-shadow: 4px 4px 0px var(--text-primary);
+  border-radius: 24px;
+  border: 1px solid var(--card-border);
+  box-shadow: 0 8px 30px rgba(27, 19, 26, 0.02);
   overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .leadership-photo:hover {
-  box-shadow: 5px 5px 0px var(--text-primary);
+  box-shadow: 0 14px 40px rgba(27, 19, 26, 0.08);
 }
 
 .leadership-photo img {

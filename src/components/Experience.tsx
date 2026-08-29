@@ -39,7 +39,7 @@ export default function Experience() {
   return (
     <section 
       id="experience" 
-      className={`py-6 md:py-8 transition-colors duration-300 relative ${
+      className={`scroll-mt-16 md:scroll-mt-24 py-6 md:py-8 transition-colors duration-300 relative ${
         isDarkMode ? 'bg-transparent text-[color:var(--text-primary)]' : 'bg-transparent text-[color:var(--text-primary)]'
       }`}
     >
@@ -66,7 +66,7 @@ export default function Experience() {
                         href={exp.certificateUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="hover:text-[color:var(--accent-rose)] hover:underline decoration-2 transition duration-300 cursor-pointer"
+                        className="hover:underline decoration-2 transition duration-300 cursor-pointer"
                       >
                         {exp.role} @ {exp.company}
                       </a>

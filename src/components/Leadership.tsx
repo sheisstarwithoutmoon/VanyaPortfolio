@@ -40,7 +40,7 @@ export default function Leadership() {
   return (
     <section 
       id="leadership" 
-      className={`py-6 md:py-8 transition-colors duration-300 relative ${
+      className={`scroll-mt-16 md:scroll-mt-24 py-6 md:py-8 transition-colors duration-300 relative ${
         isDarkMode ? 'bg-transparent text-[color:var(--text-primary)]' : 'bg-transparent text-[color:var(--text-primary)]'
       }`}
     >

@@ -43,7 +43,7 @@ export default function Projects() {
   return (
     <section 
       id="projects" 
-      className={`py-8 md:py-10 transition-colors duration-300 relative ${
+      className={`scroll-mt-16 md:scroll-mt-24 py-8 md:py-10 transition-colors duration-300 relative ${
         isDarkMode ? 'bg-transparent text-[color:var(--text-primary)]' : 'bg-transparent text-[color:var(--text-primary)]'
       }`}
     >
@@ -167,7 +167,7 @@ export default function Projects() {
               className={`panel panel-muted rounded-3xl overflow-hidden flex flex-col justify-between border transition-all duration-300 hover:-translate-y-1 group cursor-pointer ${
                 activeIndex === index
                   ? 'border-[color:var(--accent-rose)] bg-[color:var(--accent-rose)]/5 shadow-[0_12px_40px_rgba(211,59,101,0.04)]'
-                  : 'border-[color:var(--stroke)] bg-[color:var(--surface-2)] shadow-[0_8px_30px_rgba(27,19,26,0.01)] hover:border-[color:var(--accent-rose)]/30'
+                  : 'border-[color:var(--card-border)] bg-[color:var(--surface-2)] shadow-[0_8px_30px_rgba(27,19,26,0.01)] hover:border-[color:var(--accent-rose)]'
               }`}
               onClick={() => setActiveIndex(index)}
               data-reveal
@@ -206,7 +206,7 @@ export default function Projects() {
                 </div>
 
                 {/* Title and Full Description */}
-                <h4 className="section-title text-xl font-bold text-[color:var(--text-title)] mb-3 leading-tight transition duration-300 group-hover:text-[color:var(--accent-rose)]">
+                <h4 className="section-title text-xl font-bold text-[color:var(--text-title)] mb-3 leading-tight transition duration-300">
                   {project.title}
                 </h4>
                 <p className="text-muted text-sm leading-relaxed mb-4">

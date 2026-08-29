@@ -45,7 +45,7 @@ export default function Achievements() {
   return (
     <section 
       id="achievements" 
-      className={`pt-4 pb-2 md:pt-6 md:pb-3 transition-colors duration-300 relative ${
+      className={`scroll-mt-16 md:scroll-mt-24 pt-4 pb-2 md:pt-6 md:pb-3 transition-colors duration-300 relative ${
         isDarkMode ? 'bg-transparent text-[color:var(--text-primary)]' : 'bg-transparent text-[color:var(--text-primary)]'
       }`}
     >
@@ -63,7 +63,7 @@ export default function Achievements() {
           {achievements.map((achievement, index) => {
             const cardContent = (
               <>
-                <h3 className="text-base md:text-lg text-[color:var(--text-title)] font-extrabold leading-snug mb-2 group-hover:text-[color:var(--accent-rose)] transition duration-200">
+                <h3 className="text-base md:text-lg text-[color:var(--text-title)] font-extrabold leading-snug mb-2 transition duration-200">
                   {achievement.title}
                 </h3>
                 <p className="text-muted text-xs md:text-sm leading-relaxed">

@@ -69,6 +69,77 @@
       ]
     ]
   },
+  "skillCategories": [
+    {
+      "title": "languages",
+      "skills": [
+        { "name": "C++", "logo": "https://cdn.svgporn.com/logos/c-plusplus.svg" },
+        { "name": "C", "logo": "https://cdn.svgporn.com/logos/c.svg" },
+        { "name": "Python", "logo": "https://cdn.svgporn.com/logos/python.svg" },
+        { "name": "Java", "logo": "https://cdn.svgporn.com/logos/java.svg" },
+        { "name": "TypeScript", "logo": "https://cdn.svgporn.com/logos/typescript-icon.svg" },
+        { "name": "JavaScript", "logo": "https://cdn.svgporn.com/logos/javascript.svg" },
+        { "name": "Dart", "logo": "/dart.png" }
+      ]
+    },
+    {
+      "title": "frameworks & mobile",
+      "skills": [
+        { "name": "React.js", "logo": "https://cdn.svgporn.com/logos/react.svg" },
+        { "name": "Next.js", "logo": "https://cdn.svgporn.com/logos/nextjs-icon.svg" },
+        { "name": "Flutter", "logo": "/flutter.png" },
+        { "name": "Node.js", "logo": "https://cdn.svgporn.com/logos/nodejs-icon.svg" },
+        { "name": "HTML5", "logo": "/html.svg" },
+        { "name": "CSS3", "logo": "/css.svg" },
+        { "name": "Tailwind CSS", "logo": "https://cdn.svgporn.com/logos/tailwindcss-icon.svg" }
+      ]
+    },
+    {
+      "title": "backend & apis",
+      "skills": [
+        { "name": "Node.js", "logo": "https://cdn.svgporn.com/logos/nodejs-icon.svg" },
+        { "name": "Express.js", "logo": "https://cdn.svgporn.com/logos/express.svg" },
+        { "name": "REST APIs" },
+        { "name": "GraphQL", "logo": "https://cdn.svgporn.com/logos/graphql.svg" },
+        { "name": "WebSockets", "logo": "https://cdn.svgporn.com/logos/websocket.svg" },
+        { "name": "Redis", "logo": "https://cdn.svgporn.com/logos/redis.svg" },
+        { "name": "Nginx", "logo": "https://cdn.svgporn.com/logos/nginx.svg" }
+      ]
+    },
+    {
+      "title": "databases & storage",
+      "skills": [
+        { "name": "PostgreSQL", "logo": "https://cdn.svgporn.com/logos/postgresql.svg" },
+        { "name": "pgvector" },
+        { "name": "MySQL", "logo": "/mysql.png" },
+        { "name": "MongoDB", "logo": "https://cdn.svgporn.com/logos/mongodb-icon.svg" },
+        { "name": "Firebase Firestore", "logo": "/firebase.png" }
+      ]
+    },
+    {
+      "title": "cloud & devops",
+      "skills": [
+        { "name": "GCP", "logo": "/gcp.png" },
+        { "name": "AWS Cloud", "logo": "https://cdn.svgporn.com/logos/aws.svg" },
+        { "name": "Docker", "logo": "https://cdn.svgporn.com/logos/docker-icon.svg" },
+        { "name": "Git", "logo": "https://cdn.svgporn.com/logos/git-icon.svg" },
+        { "name": "GitHub", "logo": "/github.svg" },
+        { "name": "Linux", "logo": "https://cdn.svgporn.com/logos/linux-tux.svg" },
+        { "name": "Postman", "logo": "https://cdn.svgporn.com/logos/postman-icon.svg" },
+        { "name": "Jest", "logo": "https://cdn.svgporn.com/logos/jest.svg" }
+      ]
+    },
+    {
+      "title": "core fundamentals",
+      "skills": [
+        { "name": "Data Structures & Algorithms" },
+        { "name": "OOP" },
+        { "name": "DBMS" },
+        { "name": "Operating Systems" },
+        { "name": "Computer Networks" }
+      ]
+    }
+  ],
   "projects": [
     {
       "slug": "milestone",
@@ -177,7 +248,7 @@
       {
         "slug": "hoffero",
         "role": "SDE Intern",
-        "company": "Hoffero",
+        "company": "Hoffero TravTech LLP",
         "location": "Singapore (Remote)",
         "duration": "MAY 2025 - OCT 2025",
         "tech": ["Node.js", "GCP", "MCP", "Flutter", "Firebase"],

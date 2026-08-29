@@ -44,7 +44,7 @@ export default function Research() {
   return (
     <section 
       id="research" 
-      className={`py-6 md:py-8 transition-colors duration-300 relative ${
+      className={`scroll-mt-16 md:scroll-mt-24 py-6 md:py-8 transition-colors duration-300 relative ${
         isDarkMode ? 'bg-transparent text-[color:var(--text-primary)]' : 'bg-transparent text-[color:var(--text-primary)]'
       }`}
     >
@@ -89,7 +89,7 @@ export default function Research() {
                 </div>
 
                 {/* Dropdown Chevron */}
-                <div className={`w-9 h-9 flex items-center justify-center rounded-xl border-2 border-[color:var(--text-primary)] bg-[color:var(--surface-3)] shrink-0 transition-transform duration-300 ${
+                <div className={`w-9 h-9 flex items-center justify-center rounded-xl border border-[color:var(--stroke)] bg-[color:var(--surface-3)] shrink-0 transition-transform duration-300 ${
                   openIndex === index ? 'rotate-180' : ''
                 }`}>
                   <ChevronDown className="w-5 h-5" />
@@ -120,7 +120,7 @@ export default function Research() {
                         href={paper.link} 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border-2 border-[color:var(--text-primary)] bg-[color:var(--accent-lavender)] text-[color:var(--background)] font-bold text-xs uppercase tracking-wider shadow-[2px_2px_0px_0px_var(--text-primary)] hover:translate-x-[-1px] hover:translate-y-[-1px] transition-all duration-200"
+                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-[color:var(--stroke)] bg-[color:var(--accent-lavender)] text-[color:var(--background)] font-bold text-xs uppercase tracking-wider shadow-sm hover:opacity-90 transition duration-200"
                       >
                         Read Paper
                         <ExternalLink className="w-3.5 h-3.5" />

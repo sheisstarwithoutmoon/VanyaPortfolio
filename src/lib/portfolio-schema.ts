@@ -76,6 +76,11 @@ export const skillDisplaySchema = z.object({
   logo: z.string().optional(),
 });
 
+export const skillCategorySchema = z.object({
+  title: z.string().min(1),
+  skills: z.array(skillDisplaySchema).default([]),
+});
+
 export const projectDisplaySchema = z.object({
   slug: z.string().min(1),
   title: z.string().min(1),
@@ -131,6 +136,7 @@ export const portfolioDataSchema = z.object({
   skillDisplay: z.object({
     rows: z.array(z.array(skillDisplaySchema)).default([]),
   }),
+  skillCategories: z.array(skillCategorySchema).optional(),
   projects: z.array(projectDisplaySchema).default([]),
   research: z.array(researchSchema).default([]),
   leadership: z.array(leadershipSchema).default([]),
