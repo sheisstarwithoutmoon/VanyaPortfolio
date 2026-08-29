@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import { portfolio } from '@/lib/portfolio';
-import { Calendar, MapPin } from 'lucide-react';
+import { MapPin } from 'lucide-react';
 import { useScrollReveal, useStaggerReveal } from '@/hooks/useScrollReveal';
 
 export default function Experience() {
@@ -58,22 +58,32 @@ export default function Experience() {
             <div key={exp.slug || index} className="neo-card p-6 md:p-8 space-y-6" data-reveal>
               
               {/* Header Row */}
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
                 <div>
-                  <h3 className="text-xl md:text-2xl text-[color:var(--text-title)] font-extrabold">
-                    {exp.role} @ {exp.company}
+                  <h3 className="text-xl md:text-2xl text-[color:var(--text-title)] font-extrabold leading-tight">
+                    {exp.certificateUrl ? (
+                      <a
+                        href={exp.certificateUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-[color:var(--accent-rose)] hover:underline decoration-2 transition duration-300 cursor-pointer"
+                      >
+                        {exp.role} @ {exp.company}
+                      </a>
+                    ) : (
+                      `${exp.role} @ ${exp.company}`
+                    )}
                   </h3>
                   {exp.location && (
-                    <p className="text-xs text-muted font-medium flex items-center gap-1 mt-1">
+                    <p className="text-xs text-muted font-medium flex items-center gap-1 mt-1.5">
                       <MapPin className="w-3.5 h-3.5 opacity-60" />
                       {exp.location}
                     </p>
                   )}
                 </div>
 
-                {/* Duration Badge */}
-                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-[color:var(--stroke)] bg-[color:var(--surface-3)] text-xs font-semibold text-muted uppercase tracking-wider self-start sm:self-auto">
-                  <Calendar className="w-3.5 h-3.5 opacity-60" />
+                {/* Duration Badge (No icon, aligned cleanly) */}
+                <div className="inline-flex items-center px-3 py-1 rounded-full border border-[color:var(--stroke)] bg-[color:var(--surface-3)] text-xs font-semibold text-muted uppercase tracking-wider self-start shrink-0">
                   {exp.duration}
                 </div>
               </div>

@@ -101,18 +101,18 @@
   "research": [
     {
       "title": "A Lightweight Reinforcement Learning Framework for Othello Agents: Exploring Reward Shaping and Efficient Exploration",
-      "conference": "ICAART 2026 — Published",
-      "badge": "B-Ranked Conference",
-      "description": "Designed a high-performance, lightweight TD-learning architecture optimized for training competitive gameplay agents without heavy GPU resources. Investigated custom reward shaping formulas and exploration strategies to solve sparse-reward states in grid-board tactics.",
-      "tech": "TD-Learning • Reward Shaping • Exploration Strategy • Game AI",
+      "conference": "ICAART 2026, Marbella, Spain",
+      "badge": "ICORE B ranked Conference",
+      "description": "This paper presents a lightweight Deep Q-Network framework for CPU-efficient Othello agents, investigating how dense reward shaping and exploration strategies affect learning efficiency. The approach combines state-dependent dense rewards with shallow, search-limited dynamic programming during action selection and evaluates eight exploration strategies through self-play and random-opponent experiments. Results show improved training stability and convergence, with Randomized Value Functions (RVF) demonstrating particularly strong exploration performance under computational constraints.",
+      "tech": "Deep Reinforcement Learning • Exploration Strategies • Othello Agents • Reward Shaping • CPU-Efficient Learning",
       "link": "https://www.scitepress.org/Link.aspx?doi=10.5220/0014326900004052"
     },
     {
       "title": "Autonomous Control for Reusable Rocket Landing: Deriving a Robust Guidance through Deep Reinforcement Learning in a Custom 3D Simulation Environment",
-      "conference": "ICAART 2026 — Published",
-      "badge": "B-Ranked Conference",
-      "description": "Developed an autonomous control guidance framework in a custom-built 3D physical environment simulating vertical descent dynamics of rocket landing stages. Formulated robust deep reinforcement learning policies to calculate precise landing controls under adverse drag conditions.",
-      "tech": "Deep Reinforcement Learning • 3D Simulation • Control Systems • Rocket Guidance",
+      "conference": "ICAART 2026, Marbella, Spain",
+      "badge": "ICORE B ranked Conference",
+      "description": "This paper proposes a reinforcement learning framework for autonomous rocket landing that removes the need for handcrafted control laws. The method introduces a custom 3D physics simulation incorporating gravity, thrust, rotational dynamics, off-center exhaust torque, and fuel consumption, while an RL agent learns thrust and attitude control from continuous state feedback. The framework formulates landing as a control optimization problem using reward shaping to jointly improve landing precision and stability, demonstrating the potential of RL for autonomous guidance in nonlinear rocket dynamics.",
+      "tech": "Reinforcement Learning • Autonomous Rocket Landing • Custom 3D Simulation Environment • Reward Function Shaping",
       "link": "https://www.scitepress.org/Link.aspx?doi=10.5220/0014326200004052"
     }
   ],
@@ -122,13 +122,14 @@
       "organization": "GDG on Campus (IIIT Sri City)",
       "duration": "Sept 2025 - June 2026",
       "images": [
-        "/van.jpeg",
-        "/van.jpeg"
+        "/images/gdg1.png",
+        "/images/gdg2.png"
       ],
       "bullets": [
         "Served as the GDG on Campus Lead at IIIT Sri City, fostering tech awareness and practical learning on campus.",
         "Led strategic technical initiatives, including the Google Cloud Jam, achieving over 100+ program completions.",
-        "Organized 8+ technical workshops and collaborative campus hackathons, bringing hands-on engineering challenges directly to peers."
+        "Organized 8+ technical workshops and collaborative campus hackathons, bringing hands-on engineering challenges directly to peers.",
+        "Initiated Women In Tech program at IIIT Sri City, promoting diversity and inclusion in tech through mentorship and workshops."
       ]
     }
   ],
@@ -179,7 +180,7 @@
         "company": "Hoffero",
         "location": "Singapore (Remote)",
         "duration": "MAY 2025 - OCT 2025",
-        "tech": ["Node.js", "Flutter", "Firebase", "GCP"],
+        "tech": ["Node.js", "GCP", "MCP", "Flutter", "Firebase"],
         "bullets": [
           "Designed and implemented Instagram webhooks enabling automated creator messaging at scale, helping hotels and creators coordinate seamlessly.",
           "Improved an AI Trip Guide chatbot using Model Context Protocol (MCP) architecture, decreasing response latency by 20%.",
@@ -192,9 +193,9 @@
       {
         "slug": "iiit-sricity",
         "institution": "Indian Institute of Information Technology, Sri City",
-        "degree": "B.Tech in Computer Science & Engineering (Honors)",
+        "degree": "B.Tech (Honors) in Computer Science & Engineering ",
         "period": "Aug. 2023 - June 2027",
-        "gpa": "9.38 / 10.0",
+        "gpa": "9.41 / 10.0",
         "url": "https://www.iiits.ac.in/"
       }
     ],
@@ -202,12 +203,22 @@
     "certifications": [],
     "achievements": [
       {
-        "title": "Flipkart GRiD 7.0 Semifinalist",
-        "description": "Qualified as National Semifinalist in Flipkart GRiD 7.0"
+        "title": "Academic Excellence Award, IIIT Sri City",
+        "description": "Received three consecutive years in recognition of outstanding academic performance and maintaining an exceptional GPA."
       },
       {
-        "title": "Academic Excellence Award",
-        "description": "Received twice in recognition of outstanding academic performance and maintaining an exceptional GPA."
+        "title": "Flipkart GRiD 7.0",
+        "description": "Advanced to National Semi-Finals out of 100,000+ participants across India.",
+        "link": "https://drive.google.com/file/d/1UKE4Yru_bs8yADpSEsaqV6e9wri7jA3B/view?usp=sharing"
+      },
+      {
+        "title": "Research Publications",
+        "description": "Published a paper at ICAART 2026 (ICORE B-Ranked Conference), including a study on reward shaping and exploration strategies for Deep RL agents ."
+      },
+      {
+        "title": "App-a-thon 2024",
+        "description": "Won 2nd Runner-Up among 50+ teams conducted by iLabs, Hyderabad.",
+        "link": "https://lnkd.in/p/diQwY8u8"
       }
     ]
   }

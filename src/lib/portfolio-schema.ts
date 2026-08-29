@@ -11,6 +11,7 @@ export const experienceSchema = z.object({
   company: z.string().min(1),
   location: z.string().optional(),
   duration: z.string().min(1),
+  certificateUrl: z.string().optional(),
   tech: z.array(z.string().min(1)).default([]),
   bullets: z.array(z.string().min(1)).default([]),
 });
@@ -42,6 +43,7 @@ export const certificationSchema = z.object({
 export const achievementSchema = z.object({
   title: z.string().min(1),
   description: z.string().min(1),
+  link: z.string().optional(),
 });
 
 export const profileSchema = z.object({

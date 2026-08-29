@@ -118,13 +118,15 @@
       "slug": "sde-intern-0",
       "role": "SDE Intern",
       "company": "Hoffero TravTech LLP",
-      "location": "Singapore Remote",
+      "location": "Singapore (Remote)",
       "duration": "May 2025 - Oct 2025",
+      "certificateUrl": "https://drive.google.com/file/u/0/d/1Qs2_4KyQ2_vqjKHtKMWt3c6VZmyRI0S9/view?usp=sharing&pli=1",
       "tech": [
         "Node.js",
+        "GCP", 
+        "MCP",
         "Flutter",
-        "Firebase",
-        "GCP"
+        "Firebase"
       ],
       "bullets": [
         "Automated Instagram engagement by routing webhook events through Google Cloud Functions, with the deployed webhook handling 1M+ requests over 14 days at a 99.994% request success rate.",
@@ -138,31 +140,29 @@
     {
       "slug": "indian-institute-of-information-technologysri-city-andhra-pradesh-0",
       "institution": "Indian Institute of Information Technology, Sri City",
-      "degree": "B.Tech (Hons.) in CSE - CGPA: 9.41/10.0Aug. 2023 – June 2027",
+      "degree": "B.Tech (Hons.) in CSE - CGPA: 9.41/10.0Aug. 2023 - June 2027",
       "period": "2023 - June 2027",
       "gpa": "9.41/10.0"
     }
   ],
   "achievements": [
     {
-      "title": "Competitive Programming",
-      "description": "Solved 500+ problems across different coding platforms, achieving a peak rating of 1887 on LeetCode and 1276 on Codeforces."
+      "title": "Academic Excellence Award, IIIT Sri City",
+      "description": "Received three consecutive years in recognition of outstanding academic performance and maintaining an exceptional GPA."
     },
     {
       "title": "Flipkart GRiD 7.0",
-      "description": "Advanced to National Semi-Finals out of 100,000+ participants across India."
-    },
-    {
-      "title": "Academic Excellence Award",
-      "description": "Received thrice for maintaining an excellent CGPA."
+      "description": "Advanced to National Semi-Finals out of 100,000+ participants across India.",
+      "link": "https://drive.google.com/file/d/1UKE4Yru_bs8yADpSEsaqV6e9wri7jA3B/view?usp=sharing"
     },
     {
       "title": "Research Publications",
-      "description": "Published a paper at ICAART 2026 (CORE B-Ranked Conference), including a study on reward shaping and exploration strategies for Deep RL agents ."
+      "description": "Published a paper at ICAART 2026 (ICORE B-Ranked Conference), including a study on reward shaping and exploration strategies for Deep RL agents ."
     },
     {
       "title": "App-a-thon 2024",
-      "description": "Won 2nd Runner-Up among 50+ teams at iLabs, Hyderabad."
+      "description": "Won 2nd Runner-Up among 50+ teams conducted by iLabs, Hyderabad.",
+      "link": "https://lnkd.in/p/diQwY8u8"
     }
   ]
 }

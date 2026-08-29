@@ -106,12 +106,6 @@ export default function Leadership() {
                     alt={`Leadership moment ${idx + 1}`}
                     className="aspect-[4/3] object-cover w-full h-full"
                   />
-                  {/* Caption strip */}
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-3">
-                    <p className="text-white text-xs font-medium handwritten text-center">
-                      {idx === 0 ? 'leading the team ✦' : 'workshop vibes 🎯'}
-                    </p>
-                  </div>
                 </div>
               ))}
             </div>

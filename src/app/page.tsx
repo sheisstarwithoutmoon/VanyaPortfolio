@@ -23,21 +23,21 @@ export default function Home() {
         <Achievements />
       </main>
 
-      <div className="relative w-full overflow-hidden h-24 sm:h-28 md:h-32 mt-12">
+      <div className="relative w-full overflow-hidden h-20 sm:h-24 my-2">
         <img
           src="/stickers/fish_pixel.png"
           alt="Pixel fish"
-          className="fish-swim w-20 sm:w-24 md:w-28 h-auto pointer-events-none select-none"
+          className="fish-swim w-16 sm:w-20 md:w-22 h-auto pointer-events-none select-none"
         />
 
         <img
           src="/stickers/fish_pixel.png"
           alt="Pixel fish"
-          className="fish-swim-delay w-20 sm:w-24 md:w-28 h-auto pointer-events-none select-none"
+          className="fish-swim-delay w-16 sm:w-20 md:w-22 h-auto pointer-events-none select-none"
         />
       </div>
       
-      <footer className="w-full text-center py-10 pb-32 text-xs font-medium tracking-wide text-muted/50 space-y-1.5 select-none">
+      <footer className="w-full text-center py-4 pb-20 text-xs sm:text-sm font-medium tracking-wide text-muted/60 space-y-1 select-none">
         <p>{portfolio.footer.line1}</p>
         <p>{portfolio.footer.line2}</p>
       </footer>

@@ -374,16 +374,16 @@ html {
     transform: translate(-20vw, -50%) translateY(0px);
   }
   20% {
-    transform: translate(10vw, -50%) translateY(-20px);
+    transform: translate(10vw, -50%) translateY(-6px);
   }
   40% {
-    transform: translate(35vw, -50%) translateY(20px);
+    transform: translate(35vw, -50%) translateY(6px);
   }
   60% {
-    transform: translate(65vw, -50%) translateY(-20px);
+    transform: translate(65vw, -50%) translateY(-6px);
   }
   80% {
-    transform: translate(95vw, -50%) translateY(20px);
+    transform: translate(95vw, -50%) translateY(6px);
   }
   100% {
     transform: translate(120vw, -50%) translateY(0px);

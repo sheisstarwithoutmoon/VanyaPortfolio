@@ -6,6 +6,7 @@ import { useScrollReveal, useStaggerReveal } from '@/hooks/useScrollReveal';
 type AchievementItem = {
   title: string;
   description: string;
+  link?: string;
 };
 
 export default function Achievements() {
@@ -44,7 +45,7 @@ export default function Achievements() {
   return (
     <section 
       id="achievements" 
-      className={`py-6 md:py-8 transition-colors duration-300 relative ${
+      className={`pt-4 pb-2 md:pt-6 md:pb-3 transition-colors duration-300 relative ${
         isDarkMode ? 'bg-transparent text-[color:var(--text-primary)]' : 'bg-transparent text-[color:var(--text-primary)]'
       }`}
     >
@@ -57,25 +58,45 @@ export default function Achievements() {
           </h2>
         </div>
 
-        {/* Clean Compact Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 items-stretch" ref={cardsRef}>
-          {achievements.map((achievement, index) => (
-            <div 
-              key={index}
-              className="neo-card p-5 md:p-6 flex flex-col justify-start h-full"
-              data-reveal
-            >
-              {/* Heading */}
-              <h3 className="text-base md:text-lg text-[color:var(--text-title)] font-extrabold leading-snug mb-2">
-                {achievement.title}
-              </h3>
-              
-              {/* Description */}
-              <p className="text-muted text-xs md:text-sm leading-relaxed">
-                {achievement.description}
-              </p>
-            </div>
-          ))}
+        {/* Balanced 2x2 Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 items-stretch" ref={cardsRef}>
+          {achievements.map((achievement, index) => {
+            const cardContent = (
+              <>
+                <h3 className="text-base md:text-lg text-[color:var(--text-title)] font-extrabold leading-snug mb-2 group-hover:text-[color:var(--accent-rose)] transition duration-200">
+                  {achievement.title}
+                </h3>
+                <p className="text-muted text-xs md:text-sm leading-relaxed">
+                  {achievement.description}
+                </p>
+              </>
+            );
+
+            if (achievement.link) {
+              return (
+                <a
+                  key={index}
+                  href={achievement.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="neo-card p-5 md:p-6 flex flex-col justify-start h-full group cursor-pointer block no-underline transition-all duration-300"
+                  data-reveal
+                >
+                  {cardContent}
+                </a>
+              );
+            }
+
+            return (
+              <div 
+                key={index}
+                className="neo-card p-5 md:p-6 flex flex-col justify-start h-full group"
+                data-reveal
+              >
+                {cardContent}
+              </div>
+            );
+          })}
         </div>
 
       </div>

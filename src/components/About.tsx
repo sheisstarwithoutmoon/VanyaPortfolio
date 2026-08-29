@@ -104,15 +104,15 @@ export default function About() {
                     </p>
                   </div>
                   
-                  <div className="flex flex-wrap items-center justify-between gap-4 pt-2 border-t border-dashed border-[color:var(--stroke)] text-sm">
-                    <span className="text-muted font-medium text-xs">
+                  <div className="flex flex-wrap items-center justify-between gap-4 pt-3 border-t border-dashed border-[color:var(--stroke)] text-sm md:text-base">
+                    <span className="text-muted font-medium text-sm md:text-base">
                       {edu.period}
                     </span>
                     
                     {edu.gpa && (
-                      <div className="flex items-center gap-1 text-xs">
-                        <span className="text-muted">CGPA:</span>
-                        <span className="font-semibold text-[color:var(--text-primary)]">
+                      <div className="flex items-center gap-1.5 text-sm md:text-base">
+                        <span className="text-muted font-medium">CGPA:</span>
+                        <span className="font-bold text-[color:var(--text-primary)]">
                           {edu.gpa}
                         </span>
                       </div>
