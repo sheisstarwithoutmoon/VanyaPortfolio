@@ -99,8 +99,8 @@ export default function Projects() {
                 <ChevronRight className="w-5 h-5 md:w-6 h-6" />
               </button>
               
-              {/* Overlay text content centered */}
-              <div className="absolute inset-0 bg-black/65 md:bg-gradient-to-t md:from-black/90 md:via-black/55 md:to-black/30 backdrop-blur-[2px] md:backdrop-blur-none flex flex-col justify-center items-center p-4 sm:p-6 md:p-10 text-center">
+              {/* Overlay text content */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent flex flex-col justify-center items-center p-4 sm:p-6 md:p-10 text-center">
                 
                 <h3 className="text-2xl sm:text-3xl md:text-5xl font-extrabold tracking-tight text-white mb-2 font-display transition duration-500">
                   {projects[activeIndex].title}
