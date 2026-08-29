@@ -61,10 +61,7 @@ export default function Experience() {
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div>
                   <h3 className="text-xl md:text-2xl text-[color:var(--text-title)] font-extrabold">
-                    {exp.role}{" "}
-                    <span className="text-[color:var(--accent-rose)]">
-                      @ {exp.company}
-                    </span>
+                    {exp.role} @ {exp.company}
                   </h3>
                   {exp.location && (
                     <p className="text-xs text-muted font-medium flex items-center gap-1 mt-1">

@@ -8,6 +8,7 @@ const SocialLinks = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
 
   // Initialize theme on component mount
   useEffect(() => {
@@ -26,6 +27,31 @@ const SocialLinks = () => {
     setIsMounted(true);
   }, []);
 
+  // Smart scroll detection: auto-hide when scrolling down, show when scrolling up
+  useEffect(() => {
+    let lastScrollY = window.scrollY;
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      // Always show near the very top of the page
+      if (currentScrollY < 100) {
+        setIsVisible(true);
+      } else if (currentScrollY > lastScrollY && currentScrollY - lastScrollY > 10) {
+        // Scrolling down -> hide floating dock to not obstruct content
+        setIsVisible(false);
+      } else if (currentScrollY < lastScrollY && lastScrollY - currentScrollY > 10) {
+        // Scrolling up -> show floating dock
+        setIsVisible(true);
+      }
+
+      lastScrollY = currentScrollY;
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   // Toggle theme function
   const toggleTheme = () => {
     const newTheme = !isDarkMode;
@@ -33,21 +59,6 @@ const SocialLinks = () => {
     
     // Update the document class
     document.documentElement.classList.toggle('dark', newTheme);
-    
-    // Update CSS custom properties
-    if (newTheme) {
-      // Dark mode
-      document.documentElement.style.setProperty('--background', '#000000');
-      document.documentElement.style.setProperty('--foreground', '#ffffff');
-      document.body.style.backgroundColor = '#000000';
-      document.body.style.color = '#ffffff';
-    } else {
-      // Light mode
-      document.documentElement.style.setProperty('--background', '#ffffff');
-      document.documentElement.style.setProperty('--foreground', '#000000');
-      document.body.style.backgroundColor = '#ffffff';
-      document.body.style.color = '#000000';
-    }
     
     // Save theme preference
     localStorage.setItem('theme', newTheme ? 'dark' : 'light');
@@ -92,8 +103,14 @@ const SocialLinks = () => {
   ];
 
   return (
-    <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50">
-      <div className={`flex items-center space-x-2 backdrop-blur-sm rounded-full px-4 py-3 border transition-all duration-300 ${
+    <div 
+      className={`fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-500 ease-in-out ${
+        isVisible 
+          ? 'translate-y-0 opacity-100 pointer-events-auto' 
+          : 'translate-y-24 opacity-0 pointer-events-none'
+      }`}
+    >
+      <div className={`flex items-center space-x-1.5 sm:space-x-2 backdrop-blur-sm rounded-full px-3.5 sm:px-4 py-2 sm:py-2.5 border transition-all duration-300 ${
         isDarkMode 
           ? 'bg-black/20 border-gray-700' 
           : 'bg-white/20 border-gray-300'
@@ -102,11 +119,11 @@ const SocialLinks = () => {
           <div key={index} className="relative">
             {/* Tooltip */}
             {hoveredIndex === index && link.label !== "Dark Mode" && link.label !== "Light Mode" && (
-              <div className="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2">
-                <div className={`text-xs px-2 py-1 rounded whitespace-nowrap ${
+              <div className="absolute bottom-full mb-2.5 left-1/2 transform -translate-x-1/2 pointer-events-none">
+                <div className={`text-xs px-2.5 py-1 rounded-md font-medium whitespace-nowrap shadow-md ${
                   isDarkMode 
-                    ? 'bg-black/90 text-white' 
-                    : 'bg-white/90 text-black border border-gray-200'
+                    ? 'bg-[#241821] text-[#f2e7df] border border-white/10' 
+                    : 'bg-white text-[#120b11] border border-black/10'
                 }`}>
                   {link.label}
                 </div>
@@ -114,8 +131,8 @@ const SocialLinks = () => {
                 <div className="absolute top-full left-1/2 transform -translate-x-1/2">
                   <div className={`border-l-4 border-r-4 border-t-4 border-transparent ${
                     isDarkMode 
-                      ? 'border-t-black/90' 
-                      : 'border-t-white/90'
+                      ? 'border-t-[#241821]' 
+                      : 'border-t-white'
                   }`}></div>
                 </div>
               </div>
@@ -124,10 +141,10 @@ const SocialLinks = () => {
             {link.onClick ? (
               <button
                 onClick={link.onClick}
-                className={`p-2 rounded-lg transition-all duration-200 ease-in-out transform hover:scale-110 ${
+                className={`p-2 rounded-full transition-all duration-200 ease-in-out transform hover:scale-110 cursor-pointer ${
                   isDarkMode
-                    ? 'text-gray-300 hover:text-white hover:bg-gray-700'
-                    : 'text-gray-600 hover:text-black hover:bg-gray-200'
+                    ? 'text-gray-300 hover:text-white hover:bg-white/10'
+                    : 'text-gray-700 hover:text-black hover:bg-black/5'
                 }`}
                 aria-label={link.label}
                 onMouseEnter={() => setHoveredIndex(index)}
@@ -140,10 +157,10 @@ const SocialLinks = () => {
                 href={link.href}
                 target={link.external ? "_blank" : "_self"}
                 rel={link.external ? "noopener noreferrer" : ""}
-                className={`p-2 rounded-lg transition-all duration-200 ease-in-out transform hover:scale-110 block ${
+                className={`p-2 rounded-full transition-all duration-200 ease-in-out transform hover:scale-110 block cursor-pointer ${
                   isDarkMode
-                    ? 'text-gray-300 hover:text-white hover:bg-gray-700'
-                    : 'text-gray-600 hover:text-black hover:bg-gray-200'
+                    ? 'text-gray-300 hover:text-white hover:bg-white/10'
+                    : 'text-gray-700 hover:text-black hover:bg-black/5'
                 }`}
                 aria-label={link.label}
                 onMouseEnter={() => setHoveredIndex(index)}
