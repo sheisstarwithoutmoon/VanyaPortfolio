@@ -99,59 +99,58 @@ export default function Projects() {
                 <ChevronRight className="w-5 h-5 md:w-6 h-6" />
               </button>
               
-              {/* Overlay text content */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent flex flex-col justify-end p-6 md:p-10 text-center items-center">
+              {/* Overlay text content centered */}
+              <div className="absolute inset-0 bg-black/65 md:bg-gradient-to-t md:from-black/90 md:via-black/55 md:to-black/30 backdrop-blur-[2px] md:backdrop-blur-none flex flex-col justify-center items-center p-4 sm:p-6 md:p-10 text-center">
                 
-                <h3 className="text-3xl md:text-5xl font-extrabold tracking-tight text-white mb-2 font-display transition duration-500">
+                <h3 className="text-2xl sm:text-3xl md:text-5xl font-extrabold tracking-tight text-white mb-2 font-display transition duration-500">
                   {projects[activeIndex].title}
                 </h3>
                 
-                <p className="text-white/90 text-sm md:text-base max-w-2xl leading-relaxed mb-4 min-h-[48px] transition duration-500">
+                {/* Description: hidden on phone, visible on tablet/desktop */}
+                <p className="hidden md:block text-white/90 text-sm md:text-base max-w-2xl leading-relaxed mb-4 min-h-[48px] transition duration-500">
                   {projects[activeIndex].description}
                 </p>
                 
-                <p className="text-[#e89ab4] text-xs md:text-sm font-semibold tracking-wider uppercase mb-6 transition duration-500">
+                <p className="text-[#e89ab4] text-xs sm:text-sm font-semibold tracking-wider uppercase mb-4 md:mb-6 transition duration-500 px-4 max-w-md">
                   {projects[activeIndex].tech}
                 </p>
 
-                {/* Project Links & Pagination Bullets */}
-                <div className="flex flex-col items-center gap-6 w-full">
-                  <div className="flex gap-4">
+                {/* Project Links */}
+                <div className="flex gap-3.5 sm:gap-4 mb-2 md:mb-0">
+                  <a 
+                    href={projects[activeIndex].github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-3 bg-white/15 hover:bg-white/30 text-white rounded-full transition duration-300 backdrop-blur-sm shadow-md cursor-pointer"
+                    aria-label="GitHub Repository"
+                  >
+                    <Github className="w-5 h-5" />
+                  </a>
+                  {projects[activeIndex].live && (
                     <a 
-                      href={projects[activeIndex].github}
+                      href={projects[activeIndex].live}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-3 bg-white/10 hover:bg-white/25 text-white rounded-full transition duration-300"
-                      aria-label="GitHub Repository"
+                      className="p-3 bg-white/15 hover:bg-white/30 text-white rounded-full transition duration-300 backdrop-blur-sm shadow-md cursor-pointer"
+                      aria-label="Live Demo"
                     >
-                      <Github className="w-5 h-5" />
+                      <ExternalLink className="w-5 h-5" />
                     </a>
-                    {projects[activeIndex].live && (
-                      <a 
-                        href={projects[activeIndex].live}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-3 bg-white/10 hover:bg-white/25 text-white rounded-full transition duration-300"
-                        aria-label="Live Demo"
-                      >
-                        <ExternalLink className="w-5 h-5" />
-                      </a>
-                    )}
-                  </div>
+                  )}
+                </div>
 
-                  {/* Bullet Indicators */}
-                  <div className="flex gap-2">
-                    {projects.map((_, idx) => (
-                      <button
-                        key={idx}
-                        onClick={() => setActiveIndex(idx)}
-                        className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                          activeIndex === idx ? 'w-6 bg-[color:var(--accent-rose)]' : 'w-2 bg-white/40 hover:bg-white/60'
-                        }`}
-                        aria-label={`Go to slide ${idx + 1}`}
-                      />
-                    ))}
-                  </div>
+                {/* Bullet Indicators pinned cleanly at bottom */}
+                <div className="absolute bottom-3.5 sm:bottom-5 left-1/2 -translate-x-1/2 flex gap-2">
+                  {projects.map((_, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setActiveIndex(idx)}
+                      className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                        activeIndex === idx ? 'w-6 bg-[color:var(--accent-rose)]' : 'w-2 bg-white/40 hover:bg-white/60'
+                      }`}
+                      aria-label={`Go to slide ${idx + 1}`}
+                    />
+                  ))}
                 </div>
 
               </div>

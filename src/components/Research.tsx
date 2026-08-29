@@ -68,20 +68,20 @@ export default function Research() {
               {/* Accordion Header — clickable */}
               <button
                 onClick={() => toggleAccordion(index)}
-                className="w-full flex items-center justify-between gap-4 p-5 md:p-6 text-left cursor-pointer transition-colors"
+                className="w-full flex items-center justify-between gap-3 sm:gap-4 p-4 sm:p-6 text-left cursor-pointer transition-colors"
                 aria-expanded={openIndex === index}
               >
                 {/* Title + Badges (Both identical size, font, padding, and color) */}
-                <div className="flex-1 min-w-0 space-y-2.5">
-                  <h3 className="font-bold text-base md:text-lg text-[color:var(--text-primary)] leading-snug pr-2">
+                <div className="flex-1 min-w-0 space-y-2">
+                  <h3 className="font-bold text-base md:text-lg text-[color:var(--text-primary)] leading-snug pr-1 sm:pr-2">
                     {paper.title}
                   </h3>
-                  <div className="flex flex-wrap items-center gap-2">
-                    <span className="inline-flex items-center px-2.5 py-1 rounded-md bg-[color:var(--accent-lavender)]/15 text-[color:var(--text-primary)] border border-[color:var(--accent-lavender)]/30 font-mono font-bold text-[11px] uppercase tracking-wider">
+                  <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+                    <span className="inline-flex items-center px-2.5 py-1 rounded-md bg-[color:var(--accent-lavender)]/15 text-[color:var(--text-primary)] border border-[color:var(--accent-lavender)]/30 font-mono font-bold text-[10px] sm:text-[11px] uppercase tracking-wider">
                       {paper.conference}
                     </span>
                     {paper.badge && (
-                      <span className="inline-flex items-center px-2.5 py-1 rounded-md bg-[color:var(--accent-lavender)]/15 text-[color:var(--text-primary)] border border-[color:var(--accent-lavender)]/30 font-mono font-bold text-[11px] uppercase tracking-wider">
+                      <span className="inline-flex items-center px-2.5 py-1 rounded-md bg-[color:var(--accent-lavender)]/15 text-[color:var(--text-primary)] border border-[color:var(--accent-lavender)]/30 font-mono font-bold text-[10px] sm:text-[11px] uppercase tracking-wider">
                         {paper.badge}
                       </span>
                     )}
@@ -89,26 +89,26 @@ export default function Research() {
                 </div>
 
                 {/* Dropdown Chevron */}
-                <div className={`w-9 h-9 flex items-center justify-center rounded-xl border border-[color:var(--stroke)] bg-[color:var(--surface-3)] shrink-0 transition-transform duration-300 ${
+                <div className={`w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center rounded-xl border border-[color:var(--stroke)] bg-[color:var(--surface-3)] shrink-0 transition-transform duration-300 ${
                   openIndex === index ? 'rotate-180' : ''
                 }`}>
-                  <ChevronDown className="w-5 h-5" />
+                  <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5" />
                 </div>
               </button>
 
-              {/* Accordion Content — expandable */}
-              <div className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                openIndex === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+              {/* Accordion Content — expandable with full height on mobile */}
+              <div className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                openIndex === index ? 'max-h-[1500px] opacity-100' : 'max-h-0 opacity-0'
               }`}>
-                <div className="px-5 md:px-6 pb-6 pt-2 space-y-4 border-t border-dashed border-[color:var(--stroke)] bg-[color:var(--surface-3)]/30">
+                <div className="px-4 sm:px-6 pb-5 sm:pb-6 pt-2 space-y-4 border-t border-dashed border-[color:var(--stroke)] bg-[color:var(--surface-3)]/30">
                   {/* Description / Summary */}
-                  <p className="text-muted text-sm md:text-base leading-relaxed pt-2">
+                  <p className="text-muted text-xs sm:text-sm md:text-base leading-relaxed pt-2">
                     {paper.description}
                   </p>
 
                   {/* Tech tags */}
                   {paper.tech && (
-                    <div className="text-xs font-semibold tracking-wider text-muted font-mono pt-1">
+                    <div className="text-[11px] sm:text-xs font-semibold tracking-wider text-muted font-mono pt-1 leading-relaxed">
                       {paper.tech}
                     </div>
                   )}
@@ -120,7 +120,7 @@ export default function Research() {
                         href={paper.link} 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-[color:var(--stroke)] bg-[color:var(--accent-lavender)] text-[color:var(--background)] font-bold text-xs uppercase tracking-wider shadow-sm hover:opacity-90 transition duration-200"
+                        className="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full border border-[color:var(--stroke)] bg-[color:var(--accent-lavender)] text-[color:var(--background)] font-bold text-xs uppercase tracking-wider shadow-sm hover:opacity-90 transition duration-200"
                       >
                         Read Paper
                         <ExternalLink className="w-3.5 h-3.5" />
