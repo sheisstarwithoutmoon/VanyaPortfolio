@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Inter:wght@300;400;500;600&family=DM+Sans:wght@400;500;600;700;800;900&display=swap");
 
 @import "tailwindcss";
 
@@ -20,8 +20,10 @@
   --text-muted: #3a3237;
   --text-title: #4a1c2e; /* highly visible rich dark plum for headings in light mode */
   --font-body: "Inter", sans-serif;
-  --font-display: "Playfair Display", serif;
+  --font-display: "DM Sans", sans-serif;
   --bg-image: none;
+  --surface-box: rgba(255, 255, 255, 0.96);
+  --surface-box-marquee: rgba(255, 255, 255, 0.96);
 }
 
 .dark {
@@ -40,6 +42,8 @@
   --text-muted: rgba(242, 231, 223, 0.75);
   --text-title: #e89ab4; /* rich soft rose for headings in dark mode */
   --bg-image: none;
+  --surface-box: rgba(12, 8, 11, 0.94);
+  --surface-box-marquee: rgba(12, 8, 11, 0.94);
 }
 
 @theme inline {
@@ -532,6 +536,30 @@ html {
     radial-gradient(70% 70% at 15% 20%, rgba(27, 19, 26, 0.4), transparent 75%),
     radial-gradient(60% 60% at 80% 25%, rgba(200, 162, 214, 0.12), transparent 80%),
     linear-gradient(180deg, rgba(12, 8, 11, 0.2), rgba(12, 8, 11, 1)) !important;
+}
+
+/* Clean Neobrutalism / Bento UI card styling */
+.neo-card {
+  background-color: var(--surface-2);
+  border: 1.5px solid var(--text-primary);
+  box-shadow: 4px 4px 0px var(--text-primary);
+  border-radius: 24px;
+  transition: all 0.2s ease-in-out;
+}
+
+.neo-card:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 5px 5px 0px var(--text-primary);
+}
+
+.highlight-rose {
+  color: var(--accent-rose);
+  font-weight: 700;
+}
+
+.highlight-lavender {
+  color: var(--accent-lavender);
+  font-weight: 700;
 }
 
 

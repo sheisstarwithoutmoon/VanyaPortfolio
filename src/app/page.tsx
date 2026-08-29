@@ -12,7 +12,7 @@ import { portfolio } from "@/lib/portfolio";
 export default function Home() {
   return (
     <div className="min-h-screen" style={{ background: 'transparent' }}>
-      <main>
+      <main className="space-y-4 md:space-y-6">
         <Hero />
         <About />
         <Skills />
@@ -23,8 +23,7 @@ export default function Home() {
         <Achievements />
       </main>
 
-      
-      <div className="relative w-full overflow-hidden h-24 sm:h-28 md:h-32">
+      <div className="relative w-full overflow-hidden h-24 sm:h-28 md:h-32 mt-12">
         <img
           src="/stickers/fish_pixel.png"
           alt="Pixel fish"

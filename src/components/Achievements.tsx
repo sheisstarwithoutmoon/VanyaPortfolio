@@ -41,44 +41,36 @@ export default function Achievements() {
   return (
     <section 
       id="achievements" 
-      className={`py-16 transition-colors duration-300 relative ${
+      className={`py-6 md:py-8 transition-colors duration-300 relative ${
         isDarkMode ? 'bg-transparent text-[color:var(--text-primary)]' : 'bg-transparent text-[color:var(--text-primary)]'
       }`}
     >
-      <div className="container mx-auto px-6 max-w-5xl">
+      <div className="container mx-auto px-4 sm:px-6 max-w-5xl">
         
-        {/* Header */}
-        <div className="flex items-center gap-6 mb-12">
-          <h2 className="section-title text-3xl md:text-4xl text-[color:var(--text-title)] font-bold shrink-0 lowercase">
+        {/* Clean Header */}
+        <div className="mb-6">
+          <h2 className="section-title text-3xl md:text-4xl text-[color:var(--text-title)] font-extrabold lowercase">
             / achievements
           </h2>
-          <div className="h-[1px] w-full bg-gradient-to-r from-[color:var(--stroke)] to-transparent" />
         </div>
 
-        {/* Achievements Full-Width Vertical Cards */}
-        <div className="space-y-6">
+        {/* Achievement Cards */}
+        <div className="space-y-4">
           {achievements.map((achievement, index) => (
             <div 
               key={index}
-              className="panel panel-muted rounded-3xl p-6 md:p-8 flex flex-col gap-5 border border-[color:var(--stroke)] bg-[color:var(--surface-2)] shadow-[0_8px_30px_rgba(27,19,26,0.01)] transition-all duration-300 hover:border-[color:var(--accent-rose)]/35 group"
+              className="neo-card p-6 md:p-8 flex flex-col md:flex-row gap-5 items-start"
             >
-              <div className="flex items-start gap-4">
-                <Award className="w-6 h-6 text-[color:var(--accent-rose)] opacity-85 shrink-0 mt-1" />
-                
-                <div className="space-y-4 w-full">
-                  <div className="flex flex-col gap-2">
-                    {/* Header: Title */}
-                    <div className="flex flex-wrap items-center justify-between gap-4">
-                      <h3 className="section-title text-lg md:text-xl text-[color:var(--text-title)] font-bold leading-snug group-hover:text-[color:var(--accent-rose)] transition duration-300">
-                        {achievement.title}
-                      </h3>
-                    </div>
-                  </div>
-
-                  <p className="text-muted text-sm md:text-base leading-relaxed">
-                    {achievement.description}
-                  </p>
-                </div>
+              <div className="w-11 h-11 flex items-center justify-center rounded-xl border-2 border-[color:var(--text-primary)] bg-[color:var(--accent-rose)] text-[color:var(--background)] shadow-[2px_2px_0px_0px_var(--text-primary)] shrink-0">
+                <Award className="w-5 h-5" />
+              </div>
+              <div className="space-y-1.5 w-full">
+                <h3 className="text-lg md:text-xl text-[color:var(--text-title)] font-bold">
+                  {achievement.title}
+                </h3>
+                <p className="text-muted text-sm md:text-base leading-relaxed">
+                  {achievement.description}
+                </p>
               </div>
             </div>
           ))}

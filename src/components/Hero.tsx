@@ -68,10 +68,10 @@ export default function Hero() {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto pt-2">
               <a
-                href={`mailto:${portfolio.contact.email}?subject=${encodeURIComponent(portfolio.contact.emailSubject)}`}
+                href="#experience"
                 className="btn-primary px-8 py-3.5 rounded-full text-xs md:text-sm font-semibold uppercase tracking-wider text-center"
               >
-                Get in Touch
+                My Work
               </a>
               <button
                 onClick={downloadResume}

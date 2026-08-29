@@ -33,17 +33,16 @@ export default function Projects() {
   }, []);
 
   const projects = portfolio.projects;
-
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
     <section 
       id="projects" 
-      className={`py-16 transition-colors duration-300 relative ${
+      className={`py-8 md:py-10 transition-colors duration-300 relative ${
         isDarkMode ? 'bg-transparent text-[color:var(--text-primary)]' : 'bg-transparent text-[color:var(--text-primary)]'
       }`}
     >
-      <div className="container mx-auto px-6 max-w-5xl relative">
+      <div className="container mx-auto px-4 sm:px-6 max-w-5xl relative">
         <Sticker
           src="/stickers/bow_pixel.png"
           alt="pixel bow sticker"
@@ -53,19 +52,16 @@ export default function Projects() {
           animate="none"
           withFrame={false}
         />
-        
-        {/* Editorial Header */}
-        <div className="flex items-center justify-between gap-6 mb-12">
-          <div className="flex items-center gap-6 w-full">
-            <h2 className="section-title text-3xl md:text-4xl text-[color:var(--text-title)] font-bold shrink-0 lowercase">
-              / projects
-            </h2>
-            <div className="h-[1px] w-full bg-gradient-to-r from-[color:var(--stroke)] to-transparent" />
-          </div>
+
+        {/* Clean Header */}
+        <div className="mb-8">
+          <h2 className="section-title text-3xl md:text-4xl text-[color:var(--text-title)] font-extrabold lowercase">
+            / projects
+          </h2>
         </div>
 
-        {/* Featured Big Project Card (Autoplay Slideshow) */}
-        <div className="mb-16">
+        {/* Featured Big Project Card (Autoplay / Manual Slideshow) */}
+        <div className="mb-10">
           <div className="panel rounded-3xl overflow-hidden relative shadow-[0_20px_50px_rgba(91,42,61,0.06)] border border-[color:var(--stroke)] bg-[#1b131a]/85 group">
             {/* Backdrop Image with fade transitions */}
             <div className="relative h-[320px] md:h-[450px] overflow-hidden bg-[#241821] flex items-center justify-center p-6 border-b border-[color:var(--stroke)]">
@@ -75,13 +71,13 @@ export default function Projects() {
                 className="absolute inset-0 w-full h-full object-cover opacity-60 transition duration-1000 ease-in-out group-hover:scale-[1.01]"
               />
 
-              {/* Navigation Arrows: Subtle/invisible initially, glows on hover */}
+              {/* Navigation Arrows */}
               <button
                 onClick={(e) => {
                   e.stopPropagation();
                   setActiveIndex((prev) => (prev === 0 ? projects.length - 1 : prev - 1));
                 }}
-                className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-2 md:p-3 bg-black/30 hover:bg-black/60 border border-white/10 text-white rounded-full transition-all duration-300 opacity-0 group-hover:opacity-40 hover:!opacity-100 cursor-pointer"
+                className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-2 md:p-3 bg-black/40 hover:bg-black/70 border border-white/20 text-white rounded-full transition-all duration-300 opacity-0 group-hover:opacity-100 cursor-pointer"
                 aria-label="Previous Project"
               >
                 <ChevronLeft className="w-5 h-5 md:w-6 h-6" />
@@ -92,16 +88,16 @@ export default function Projects() {
                   e.stopPropagation();
                   setActiveIndex((prev) => (prev === projects.length - 1 ? 0 : prev + 1));
                 }}
-                className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-2 md:p-3 bg-black/30 hover:bg-black/60 border border-white/10 text-white rounded-full transition-all duration-300 opacity-0 group-hover:opacity-40 hover:!opacity-100 cursor-pointer"
+                className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-2 md:p-3 bg-black/40 hover:bg-black/70 border border-white/20 text-white rounded-full transition-all duration-300 opacity-0 group-hover:opacity-100 cursor-pointer"
                 aria-label="Next Project"
               >
                 <ChevronRight className="w-5 h-5 md:w-6 h-6" />
               </button>
               
-              {/* Glass overlay text content */}
+              {/* Overlay text content */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent flex flex-col justify-end p-6 md:p-10 text-center items-center">
                 
-                <h3 className="text-4xl md:text-5xl font-extrabold tracking-tight text-white mb-2 font-display transition duration-500">
+                <h3 className="text-3xl md:text-5xl font-extrabold tracking-tight text-white mb-2 font-display transition duration-500">
                   {projects[activeIndex].title}
                 </h3>
                 
@@ -120,7 +116,7 @@ export default function Projects() {
                       href={projects[activeIndex].github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-3 bg-white/10 hover:bg-white/20 text-white rounded-full transition duration-300"
+                      className="p-3 bg-white/10 hover:bg-white/25 text-white rounded-full transition duration-300"
                       aria-label="GitHub Repository"
                     >
                       <Github className="w-5 h-5" />
@@ -130,7 +126,7 @@ export default function Projects() {
                         href={projects[activeIndex].live}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="p-3 bg-white/10 hover:bg-white/20 text-white rounded-full transition duration-300"
+                        className="p-3 bg-white/10 hover:bg-white/25 text-white rounded-full transition duration-300"
                         aria-label="Live Demo"
                       >
                         <ExternalLink className="w-5 h-5" />
@@ -158,7 +154,7 @@ export default function Projects() {
           </div>
         </div>
 
-        {/* 3-Column Grid of Text-Only Folder Cards */}
+        {/* 3-Column Grid of Spacious Folder Cards (Full Description, No Truncation) */}
         <div className="grid md:grid-cols-3 sm:grid-cols-2 gap-6">
           {projects.map((project, index) => (
             <div 
@@ -170,14 +166,14 @@ export default function Projects() {
               }`}
               onClick={() => setActiveIndex(index)}
             >
-              <div className="p-8">
+              <div className="p-7 md:p-8">
                 {/* Folder card header: folder icon & links */}
-                <div className="flex items-center justify-between mb-6">
-                  <Folder className={`w-9 h-9 opacity-80 transition duration-300 ${
-                    activeIndex === index ? 'text-[color:var(--accent-rose)] scale-110' : 'text-[color:var(--accent-rose)]'
+                <div className="flex items-center justify-between mb-5">
+                  <Folder className={`w-8 h-8 opacity-85 transition duration-300 ${
+                    activeIndex === index ? 'text-[color:var(--accent-rose)] scale-105' : 'text-[color:var(--accent-rose)]'
                   }`} />
                   
-                  <div className="flex items-center gap-4 text-muted">
+                  <div className="flex items-center gap-3.5 text-muted">
                     <a 
                       href={project.github}
                       target="_blank"
@@ -186,7 +182,7 @@ export default function Projects() {
                       onClick={(e) => e.stopPropagation()}
                       aria-label="GitHub Repository"
                     >
-                      <Github className="w-5 h-5" />
+                      <Github className="w-4 h-4" />
                     </a>
                     {project.live && (
                       <a 
@@ -197,13 +193,13 @@ export default function Projects() {
                         onClick={(e) => e.stopPropagation()}
                         aria-label="Live Demo"
                       >
-                        <ExternalLink className="w-5 h-5" />
+                        <ExternalLink className="w-4 h-4" />
                       </a>
                     )}
                   </div>
                 </div>
 
-                {/* Title and Description */}
+                {/* Title and Full Description */}
                 <h4 className="section-title text-xl font-bold text-[color:var(--text-title)] mb-3 leading-tight transition duration-300 group-hover:text-[color:var(--accent-rose)]">
                   {project.title}
                 </h4>
@@ -213,7 +209,7 @@ export default function Projects() {
               </div>
 
               {/* Tech Stack list at bottom */}
-              <div className="text-xs font-semibold tracking-wider text-muted px-8 pb-8 pt-4 border-t border-[color:var(--stroke)] mt-auto font-mono">
+              <div className="text-xs font-semibold tracking-wider text-muted px-7 md:px-8 pb-7 md:pb-8 pt-4 border-t border-[color:var(--stroke)] mt-auto font-mono">
                 {project.tech}
               </div>
             </div>

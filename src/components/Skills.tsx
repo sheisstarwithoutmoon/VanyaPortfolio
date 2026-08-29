@@ -41,17 +41,16 @@ export default function Skills() {
   return (
     <section 
       id="skills" 
-      className={`py-16 transition-colors duration-300 relative overflow-hidden ${
+      className={`py-6 md:py-8 transition-colors duration-300 relative overflow-hidden ${
         isDarkMode ? 'bg-transparent text-[color:var(--text-primary)]' : 'bg-transparent text-[color:var(--text-primary)]'
       }`}
     >
-      <div className="container mx-auto px-6 max-w-5xl mb-12">
-        {/* Editorial Header */}
-        <div className="flex items-center gap-6 mb-12">
-          <h2 className="section-title text-3xl md:text-4xl text-[color:var(--text-title)] font-bold shrink-0 lowercase">
+      <div className="container mx-auto px-6 max-w-5xl mb-6">
+        {/* Clean Header */}
+        <div>
+          <h2 className="section-title text-3xl md:text-4xl text-[color:var(--text-title)] font-extrabold lowercase">
             / skills
           </h2>
-          <div className="h-[1px] w-full bg-gradient-to-r from-[color:var(--stroke)] to-transparent" />
         </div>
       </div>
 

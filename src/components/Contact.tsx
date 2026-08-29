@@ -59,21 +59,22 @@ export default function Contact() {
         isDarkMode ? 'bg-transparent text-[color:var(--text-primary)]' : 'bg-transparent text-[color:var(--text-primary)]'
       }`}
     >
-      <div className="container mx-auto px-6 max-w-5xl">
+      <div className="container mx-auto px-4 sm:px-6 max-w-5xl">
+        <div className="section-box">
         
-        {/* Editorial Header */}
-        <div className="flex items-center gap-6 mb-12">
-          <h2 className="section-title text-3xl md:text-4xl text-[color:var(--text-title)] font-bold shrink-0 lowercase">
-            / contact
-          </h2>
-          <div className="h-[1px] w-full bg-gradient-to-r from-[color:var(--stroke)] to-transparent" />
-        </div>
+        {/* Consistent Editorial Header */}
+          <div className="flex items-center gap-6 mb-10">
+            <h2 className="section-title text-3xl md:text-4xl text-[color:var(--text-title)] font-extrabold shrink-0 lowercase">
+              / contact
+            </h2>
+            <div className="h-[1px] w-full bg-gradient-to-r from-[color:var(--stroke)] to-transparent" />
+          </div>
 
         {/* Content Grid */}
         <div className="grid md:grid-cols-2 gap-10 items-start mt-8">
           
           {/* Info Card (Left) */}
-          <div className="panel panel-muted rounded-3xl p-8 bg-[color:var(--surface-2)] border border-[color:var(--stroke)] shadow-[0_8px_30px_rgba(27,19,26,0.01)] space-y-6">
+          <div className="neo-card p-6 md:p-8 space-y-6">
             <div>
               <span className="text-xs uppercase tracking-wider text-[color:var(--accent-rose)] font-bold">
                 {portfolio.contact.title}
@@ -117,7 +118,7 @@ export default function Contact() {
           {/* Form Card (Right) */}
           <form
             onSubmit={handleSubmit}
-            className="panel panel-muted rounded-3xl p-8 bg-[color:var(--surface-2)] border border-[color:var(--stroke)] shadow-[0_8px_30px_rgba(27,19,26,0.01)]"
+            className="neo-card p-6 md:p-8"
           >
             <div className="space-y-6">
               <div>
@@ -187,6 +188,7 @@ export default function Contact() {
           </form>
         </div>
 
+        </div>
       </div>
     </section>
   );

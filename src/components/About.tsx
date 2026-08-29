@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import Sticker from './Sticker';
 import { portfolio } from '@/lib/portfolio';
+import { MapPin, GraduationCap } from 'lucide-react';
 
 export default function About() {
   const [isDarkMode, setIsDarkMode] = useState(true);
@@ -34,11 +35,11 @@ export default function About() {
   return (
     <section 
       id="about" 
-      className={`py-16 overflow-hidden transition-colors duration-300 relative ${
+      className={`py-6 md:py-8 overflow-hidden transition-colors duration-300 relative ${
         isDarkMode ? 'bg-transparent text-[color:var(--text-primary)]' : 'bg-transparent text-[color:var(--text-primary)]'
       }`}
     >
-      <div className="container mx-auto px-6 max-w-5xl relative">
+      <div className="container mx-auto px-4 sm:px-6 max-w-5xl relative">
         <Sticker
           src="/stickers/stars.png"
           alt="stars sticker"
@@ -48,73 +49,80 @@ export default function About() {
           animate="none"
           withFrame={false}
         />
-        
-        <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-start">
+
+        {/* Clean Header */}
+        <div className="mb-6">
+          <h2 className="section-title text-3xl md:text-4xl text-[color:var(--text-title)] font-extrabold lowercase">
+            / about & education
+          </h2>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-6 items-stretch">
           
-          {/* Bio text */}
-          <div className="space-y-6">
-            {/* Header */}
-            <div className="flex items-center gap-4">
-              <h2 className="section-title text-3xl md:text-4xl text-[color:var(--text-title)] font-bold shrink-0 lowercase">
-                / about
-              </h2>
-              <div className="h-[1px] w-full bg-gradient-to-r from-[color:var(--stroke)] to-transparent" />
+          {/* Biography Box */}
+          <div className="neo-card p-6 md:p-8 flex flex-col justify-between h-full">
+            <div className="space-y-4">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 flex items-center justify-center rounded-xl border-2 border-[color:var(--text-primary)] bg-[color:var(--accent-rose)] text-[color:var(--background)] shadow-[2px_2px_0px_0px_var(--text-primary)] shrink-0">
+                  <MapPin className="w-5 h-5" />
+                </div>
+                <h3 className="font-bold text-lg text-[color:var(--text-title)] lowercase">about me</h3>
+              </div>
+              <p className="text-muted text-sm md:text-base leading-relaxed">
+                {portfolio.profile.summary}
+              </p>
             </div>
-            
-            <p className="section-lead text-muted text-lg leading-relaxed">
-              {portfolio.profile.summary}
-            </p>
           </div>
 
-          {/* Minimalist Editorial Education block (Matches the theme of other sections) */}
-          <div className="space-y-6">
-            {/* Header */}
-            <div className="flex items-center gap-4">
-              <h2 className="section-title text-3xl md:text-4xl text-[color:var(--text-title)] font-bold shrink-0 lowercase">
-                / education
-              </h2>
-              <div className="h-[1px] w-full bg-gradient-to-r from-[color:var(--stroke)] to-transparent" />
-            </div>
-
-            {portfolio.education.map((edu, idx) => (
-              <div key={edu.slug || idx} className="space-y-3">
-                <div>
-                  <h3 className="section-title text-xl md:text-2xl text-[color:var(--text-title)] font-bold leading-tight">
-                    {edu.url ? (
-                      <a 
-                        href={edu.url} 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        className="hover:text-[color:var(--accent-rose)] hover:underline hover:underline-offset-4 transition duration-300"
-                      >
-                        {edu.institution}
-                      </a>
-                    ) : (
-                      edu.institution
-                    )}
-                  </h3>
-                  <p className="text-muted text-base font-semibold mt-2">
-                    {edu.degree}
-                  </p>
+          {/* Education Box */}
+          <div className="neo-card p-6 md:p-8 flex flex-col justify-between h-full">
+            <div className="space-y-4">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 flex items-center justify-center rounded-xl border-2 border-[color:var(--text-primary)] bg-[color:var(--accent-lavender)] text-[color:var(--background)] shadow-[2px_2px_0px_0px_var(--text-primary)] shrink-0">
+                  <GraduationCap className="w-5 h-5" />
                 </div>
-                
-                <div className="flex flex-wrap items-center justify-between gap-4 pt-1">
-                  <span className="text-[color:var(--text-primary)] font-medium text-sm">
-                    {edu.period}
-                  </span>
-                  
-                  {edu.gpa && (
-                    <div className="flex items-center gap-1 text-sm font-medium text-[color:var(--text-primary)]">
-                      <span>CGPA:</span>
-                      <span className="font-bold text-[color:var(--accent-rose)]">
-                        {edu.gpa.includes('/') ? edu.gpa.split('/')[0].trim() : edu.gpa}
-                      </span>
-                      {edu.gpa.includes('/') && <span>/ {edu.gpa.split('/')[1].trim()}</span>}
-                    </div>
-                  )}
-                </div>
+                <h3 className="font-bold text-lg text-[color:var(--text-title)] lowercase">education</h3>
               </div>
-            ))}
+              
+              {portfolio.education.map((edu, idx) => (
+                <div key={edu.slug || idx} className="space-y-3 pt-2">
+                  <div>
+                    <h4 className="font-bold text-base md:text-lg">
+                      {edu.url ? (
+                        <a 
+                          href={edu.url} 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="hover:text-[color:var(--accent-rose)] hover:underline decoration-2 transition duration-300"
+                        >
+                          {edu.institution}
+                        </a>
+                      ) : (
+                        edu.institution
+                      )}
+                    </h4>
+                    <p className="text-muted text-sm md:text-base mt-1">
+                      {edu.degree}
+                    </p>
+                  </div>
+                  
+                  <div className="flex flex-wrap items-center justify-between gap-4 pt-2 border-t border-dashed border-[color:var(--stroke)] text-sm">
+                    <span className="text-muted font-medium text-xs">
+                      {edu.period}
+                    </span>
+                    
+                    {edu.gpa && (
+                      <div className="flex items-center gap-1 text-xs">
+                        <span className="text-muted">CGPA:</span>
+                        <span className="font-semibold text-[color:var(--text-primary)]">
+                          {edu.gpa}
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
         </div>
