@@ -48,7 +48,7 @@ export default function Hero() {
       </div>
 
       <div className="relative z-10 w-full py-20 lg:py-0">
-        <div className="container mx-auto px-6 max-w-5xl grid items-center gap-12 lg:grid-cols-[1.15fr_0.85fr] pt-12 lg:pt-0">
+        <div className="container mx-auto px-4 sm:px-6 max-w-5xl grid items-center gap-12 lg:grid-cols-[1.15fr_0.85fr] pt-12 lg:pt-0">
           
           {/* Left Editorial Copy */}
           <div className="hero-fade-in flex flex-col space-y-8 max-w-2xl text-center lg:text-left items-center lg:items-start">

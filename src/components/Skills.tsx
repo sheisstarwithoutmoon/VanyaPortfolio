@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from 'react';
 import { portfolio } from '@/lib/portfolio';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 export default function Skills() {
   const [isDarkMode, setIsDarkMode] = useState(true);
@@ -38,6 +39,9 @@ export default function Skills() {
   const scrollRow1 = [...marquee1, ...marquee1, ...marquee1];
   const scrollRow2 = [...marquee2, ...marquee2, ...marquee2];
 
+  const headerRef = useScrollReveal<HTMLDivElement>({ direction: 'left', distance: 30, duration: 600 });
+  const marqueeRef = useScrollReveal<HTMLDivElement>({ direction: 'up', distance: 40, duration: 800, delay: 100 });
+
   return (
     <section 
       id="skills" 
@@ -45,9 +49,9 @@ export default function Skills() {
         isDarkMode ? 'bg-transparent text-[color:var(--text-primary)]' : 'bg-transparent text-[color:var(--text-primary)]'
       }`}
     >
-      <div className="container mx-auto px-6 max-w-5xl mb-6">
+      <div className="container mx-auto px-4 sm:px-6 max-w-5xl mb-6">
         {/* Clean Header */}
-        <div>
+        <div ref={headerRef}>
           <h2 className="section-title text-3xl md:text-4xl text-[color:var(--text-title)] font-extrabold lowercase">
             / skills
           </h2>
@@ -55,7 +59,7 @@ export default function Skills() {
       </div>
 
       {/* Dynamic Marquee Wrapper */}
-      <div className="space-y-6 w-full">
+      <div className="space-y-6 w-full" ref={marqueeRef}>
         
         {/* Track 1: Left to Right */}
         <div className="marquee-container w-full">

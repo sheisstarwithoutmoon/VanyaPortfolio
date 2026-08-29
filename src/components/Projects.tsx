@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Sticker from './Sticker';
 import { Github, ExternalLink, Folder, ChevronLeft, ChevronRight } from 'lucide-react';
 import { portfolio } from '@/lib/portfolio';
+import { useScrollReveal, useStaggerReveal } from '@/hooks/useScrollReveal';
 
 export default function Projects() {
   const [isDarkMode, setIsDarkMode] = useState(true);
@@ -35,6 +36,10 @@ export default function Projects() {
   const projects = portfolio.projects;
   const [activeIndex, setActiveIndex] = useState(0);
 
+  const headerRef = useScrollReveal<HTMLDivElement>({ direction: 'left', distance: 30, duration: 600 });
+  const featuredRef = useScrollReveal<HTMLDivElement>({ direction: 'scale', duration: 900, delay: 100 });
+  const gridRef = useStaggerReveal<HTMLDivElement>({ direction: 'up', distance: 40, staggerMs: 120 });
+
   return (
     <section 
       id="projects" 
@@ -54,14 +59,14 @@ export default function Projects() {
         />
 
         {/* Clean Header */}
-        <div className="mb-8">
+        <div className="mb-6" ref={headerRef}>
           <h2 className="section-title text-3xl md:text-4xl text-[color:var(--text-title)] font-extrabold lowercase">
             / projects
           </h2>
         </div>
 
         {/* Featured Big Project Card (Autoplay / Manual Slideshow) */}
-        <div className="mb-10">
+        <div className="mb-10" ref={featuredRef}>
           <div className="panel rounded-3xl overflow-hidden relative shadow-[0_20px_50px_rgba(91,42,61,0.06)] border border-[color:var(--stroke)] bg-[#1b131a]/85 group">
             {/* Backdrop Image with fade transitions */}
             <div className="relative h-[320px] md:h-[450px] overflow-hidden bg-[#241821] flex items-center justify-center p-6 border-b border-[color:var(--stroke)]">
@@ -155,7 +160,7 @@ export default function Projects() {
         </div>
 
         {/* 3-Column Grid of Spacious Folder Cards (Full Description, No Truncation) */}
-        <div className="grid md:grid-cols-3 sm:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-3 sm:grid-cols-2 gap-6" ref={gridRef}>
           {projects.map((project, index) => (
             <div 
               key={index} 
@@ -165,6 +170,7 @@ export default function Projects() {
                   : 'border-[color:var(--stroke)] bg-[color:var(--surface-2)] shadow-[0_8px_30px_rgba(27,19,26,0.01)] hover:border-[color:var(--accent-rose)]/30'
               }`}
               onClick={() => setActiveIndex(index)}
+              data-reveal
             >
               <div className="p-7 md:p-8">
                 {/* Folder card header: folder icon & links */}

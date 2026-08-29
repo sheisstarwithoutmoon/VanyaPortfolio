@@ -97,6 +97,7 @@ export const leadershipSchema = z.object({
   title: z.string().min(1),
   organization: z.string().min(1),
   duration: z.string().min(1),
+  images: z.array(z.string().min(1)).optional(),
   bullets: z.array(z.string().min(1)).default([]),
 });
 

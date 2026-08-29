@@ -1,7 +1,8 @@
 "use client";
 import React, { useState, useEffect } from 'react';
-import { BookOpen, ChevronDown, ExternalLink } from 'lucide-react';
+import { ChevronDown, ExternalLink } from 'lucide-react';
 import { portfolio } from '@/lib/portfolio';
+import { useScrollReveal, useStaggerReveal } from '@/hooks/useScrollReveal';
 
 export default function Research() {
   const [isDarkMode, setIsDarkMode] = useState(true);
@@ -37,6 +38,9 @@ export default function Research() {
     setOpenIndex(openIndex === index ? null : index);
   };
 
+  const headerRef = useScrollReveal<HTMLDivElement>({ direction: 'left', distance: 30, duration: 600 });
+  const cardsRef = useStaggerReveal<HTMLDivElement>({ direction: 'up', distance: 50, staggerMs: 150 });
+
   return (
     <section 
       id="research" 
@@ -47,42 +51,37 @@ export default function Research() {
       <div className="container mx-auto px-4 sm:px-6 max-w-5xl">
         
         {/* Clean Header */}
-        <div className="mb-6">
+        <div className="mb-6" ref={headerRef}>
           <h2 className="section-title text-3xl md:text-4xl text-[color:var(--text-title)] font-extrabold lowercase">
             / research
           </h2>
         </div>
 
         {/* Neobrutalist Accordion Cards */}
-        <div className="space-y-4">
+        <div className="space-y-4" ref={cardsRef}>
           {papers.map((paper, index) => (
             <div 
               key={index}
               className="neo-card overflow-hidden !p-0"
+              data-reveal
             >
               {/* Accordion Header — clickable */}
               <button
                 onClick={() => toggleAccordion(index)}
-                className="w-full flex items-center gap-4 p-5 md:p-6 text-left cursor-pointer transition-colors"
+                className="w-full flex items-center justify-between gap-4 p-5 md:p-6 text-left cursor-pointer transition-colors"
                 aria-expanded={openIndex === index}
               >
-                {/* Icon */}
-                <div className="w-10 h-10 flex items-center justify-center rounded-xl border-2 border-[color:var(--text-primary)] bg-[color:var(--accent-lavender)] text-[color:var(--background)] shadow-[2px_2px_0px_0px_var(--text-primary)] shrink-0">
-                  <BookOpen className="w-5 h-5" />
-                </div>
-
-                {/* Title + Badge */}
-                <div className="flex-1 min-w-0 space-y-2">
-                  <h3 className="font-bold text-sm md:text-base text-[color:var(--text-primary)] leading-snug pr-2">
+                {/* Title + Badges (Both identical size, font, padding, and color) */}
+                <div className="flex-1 min-w-0 space-y-2.5">
+                  <h3 className="font-bold text-base md:text-lg text-[color:var(--text-primary)] leading-snug pr-2">
                     {paper.title}
                   </h3>
                   <div className="flex flex-wrap items-center gap-2">
-                    {/* Soft Theme-Harmonious Pastel Badge — No Neon */}
-                    <span className="px-2.5 py-0.5 rounded-md bg-[color:var(--accent-lavender)]/15 text-[color:var(--text-primary)] border border-[color:var(--accent-lavender)]/30 font-mono font-bold text-[11px] uppercase tracking-wider">
+                    <span className="inline-flex items-center px-2.5 py-1 rounded-md bg-[color:var(--accent-lavender)]/15 text-[color:var(--text-primary)] border border-[color:var(--accent-lavender)]/30 font-mono font-bold text-[11px] uppercase tracking-wider">
                       {paper.conference}
                     </span>
                     {paper.badge && (
-                      <span className="px-2 py-0.5 rounded-md bg-[color:var(--surface-3)] text-muted text-[10px] font-mono uppercase font-semibold">
+                      <span className="inline-flex items-center px-2.5 py-1 rounded-md bg-[color:var(--accent-lavender)]/15 text-[color:var(--text-primary)] border border-[color:var(--accent-lavender)]/30 font-mono font-bold text-[11px] uppercase tracking-wider">
                         {paper.badge}
                       </span>
                     )}

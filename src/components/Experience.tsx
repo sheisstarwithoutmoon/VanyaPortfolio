@@ -1,7 +1,8 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import { portfolio } from '@/lib/portfolio';
-import { Briefcase, Calendar, MapPin } from 'lucide-react';
+import { Calendar, MapPin } from 'lucide-react';
+import { useScrollReveal, useStaggerReveal } from '@/hooks/useScrollReveal';
 
 export default function Experience() {
   const [isDarkMode, setIsDarkMode] = useState(true);
@@ -32,6 +33,9 @@ export default function Experience() {
 
   const experienceData = portfolio.experience;
 
+  const headerRef = useScrollReveal<HTMLDivElement>({ direction: 'left', distance: 30, duration: 600 });
+  const cardsRef = useStaggerReveal<HTMLDivElement>({ direction: 'up', distance: 50, staggerMs: 150 });
+
   return (
     <section 
       id="experience" 
@@ -42,37 +46,32 @@ export default function Experience() {
       <div className="container mx-auto px-4 sm:px-6 max-w-5xl">
         
         {/* Clean Header */}
-        <div className="mb-6">
+        <div className="mb-6" ref={headerRef}>
           <h2 className="section-title text-3xl md:text-4xl text-[color:var(--text-title)] font-extrabold lowercase">
             / experience
           </h2>
         </div>
 
         {/* Experience Cards */}
-        <div className="space-y-6">
+        <div className="space-y-6" ref={cardsRef}>
           {experienceData.map((exp, index) => (
-            <div key={exp.slug || index} className="neo-card p-6 md:p-8 space-y-6">
+            <div key={exp.slug || index} className="neo-card p-6 md:p-8 space-y-6" data-reveal>
               
               {/* Header Row */}
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                <div className="flex items-start sm:items-center gap-3.5">
-                  <div className="w-11 h-11 flex items-center justify-center rounded-xl border-2 border-[color:var(--text-primary)] bg-[color:var(--accent-rose)] text-[color:var(--background)] shadow-[2px_2px_0px_0px_var(--text-primary)] shrink-0">
-                    <Briefcase className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl md:text-2xl text-[color:var(--text-title)] font-extrabold">
-                      {exp.role}{" "}
-                      <span className="text-[color:var(--accent-rose)]">
-                        @ {exp.company}
-                      </span>
-                    </h3>
-                    {exp.location && (
-                      <p className="text-xs text-muted font-medium flex items-center gap-1 mt-0.5">
-                        <MapPin className="w-3.5 h-3.5 opacity-60" />
-                        {exp.location}
-                      </p>
-                    )}
-                  </div>
+                <div>
+                  <h3 className="text-xl md:text-2xl text-[color:var(--text-title)] font-extrabold">
+                    {exp.role}{" "}
+                    <span className="text-[color:var(--accent-rose)]">
+                      @ {exp.company}
+                    </span>
+                  </h3>
+                  {exp.location && (
+                    <p className="text-xs text-muted font-medium flex items-center gap-1 mt-1">
+                      <MapPin className="w-3.5 h-3.5 opacity-60" />
+                      {exp.location}
+                    </p>
+                  )}
                 </div>
 
                 {/* Duration Badge */}

@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from 'react';
-import { Award } from 'lucide-react';
 import { portfolio } from '@/lib/portfolio';
+import { useScrollReveal, useStaggerReveal } from '@/hooks/useScrollReveal';
 
 type AchievementItem = {
   title: string;
@@ -38,6 +38,9 @@ export default function Achievements() {
 
   const achievements = portfolio.achievements as AchievementItem[];
 
+  const headerRef = useScrollReveal<HTMLDivElement>({ direction: 'left', distance: 30, duration: 600 });
+  const cardsRef = useStaggerReveal<HTMLDivElement>({ direction: 'up', distance: 40, staggerMs: 100 });
+
   return (
     <section 
       id="achievements" 
@@ -48,30 +51,29 @@ export default function Achievements() {
       <div className="container mx-auto px-4 sm:px-6 max-w-5xl">
         
         {/* Clean Header */}
-        <div className="mb-6">
+        <div className="mb-6" ref={headerRef}>
           <h2 className="section-title text-3xl md:text-4xl text-[color:var(--text-title)] font-extrabold lowercase">
             / achievements
           </h2>
         </div>
 
-        {/* Achievement Cards */}
-        <div className="space-y-4">
+        {/* Clean Compact Cards Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 items-stretch" ref={cardsRef}>
           {achievements.map((achievement, index) => (
             <div 
               key={index}
-              className="neo-card p-6 md:p-8 flex flex-col md:flex-row gap-5 items-start"
+              className="neo-card p-5 md:p-6 flex flex-col justify-start h-full"
+              data-reveal
             >
-              <div className="w-11 h-11 flex items-center justify-center rounded-xl border-2 border-[color:var(--text-primary)] bg-[color:var(--accent-rose)] text-[color:var(--background)] shadow-[2px_2px_0px_0px_var(--text-primary)] shrink-0">
-                <Award className="w-5 h-5" />
-              </div>
-              <div className="space-y-1.5 w-full">
-                <h3 className="text-lg md:text-xl text-[color:var(--text-title)] font-bold">
-                  {achievement.title}
-                </h3>
-                <p className="text-muted text-sm md:text-base leading-relaxed">
-                  {achievement.description}
-                </p>
-              </div>
+              {/* Heading */}
+              <h3 className="text-base md:text-lg text-[color:var(--text-title)] font-extrabold leading-snug mb-2">
+                {achievement.title}
+              </h3>
+              
+              {/* Description */}
+              <p className="text-muted text-xs md:text-sm leading-relaxed">
+                {achievement.description}
+              </p>
             </div>
           ))}
         </div>

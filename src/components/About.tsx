@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import Sticker from './Sticker';
 import { portfolio } from '@/lib/portfolio';
-import { MapPin, GraduationCap } from 'lucide-react';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 export default function About() {
   const [isDarkMode, setIsDarkMode] = useState(true);
@@ -32,6 +32,10 @@ export default function About() {
     return () => observer.disconnect();
   }, []);
 
+  const headerRef = useScrollReveal<HTMLDivElement>({ direction: 'left', distance: 30, duration: 600 });
+  const aboutCardRef = useScrollReveal<HTMLDivElement>({ direction: 'up', distance: 40, duration: 700, delay: 100 });
+  const eduCardRef = useScrollReveal<HTMLDivElement>({ direction: 'up', distance: 40, duration: 700, delay: 200 });
+
   return (
     <section 
       id="about" 
@@ -51,7 +55,7 @@ export default function About() {
         />
 
         {/* Clean Header */}
-        <div className="mb-6">
+        <div className="mb-6" ref={headerRef}>
           <h2 className="section-title text-3xl md:text-4xl text-[color:var(--text-title)] font-extrabold lowercase">
             / about & education
           </h2>
@@ -60,14 +64,11 @@ export default function About() {
         <div className="grid md:grid-cols-2 gap-6 items-stretch">
           
           {/* Biography Box */}
-          <div className="neo-card p-6 md:p-8 flex flex-col justify-between h-full">
-            <div className="space-y-4">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 flex items-center justify-center rounded-xl border-2 border-[color:var(--text-primary)] bg-[color:var(--accent-rose)] text-[color:var(--background)] shadow-[2px_2px_0px_0px_var(--text-primary)] shrink-0">
-                  <MapPin className="w-5 h-5" />
-                </div>
-                <h3 className="font-bold text-lg text-[color:var(--text-title)] lowercase">about me</h3>
-              </div>
+          <div ref={aboutCardRef} className="neo-card p-6 md:p-8 flex flex-col justify-between h-full">
+            <div className="space-y-3">
+              <h3 className="font-extrabold text-xl text-[color:var(--text-title)] lowercase">
+                about me
+              </h3>
               <p className="text-muted text-sm md:text-base leading-relaxed">
                 {portfolio.profile.summary}
               </p>
@@ -75,17 +76,14 @@ export default function About() {
           </div>
 
           {/* Education Box */}
-          <div className="neo-card p-6 md:p-8 flex flex-col justify-between h-full">
-            <div className="space-y-4">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 flex items-center justify-center rounded-xl border-2 border-[color:var(--text-primary)] bg-[color:var(--accent-lavender)] text-[color:var(--background)] shadow-[2px_2px_0px_0px_var(--text-primary)] shrink-0">
-                  <GraduationCap className="w-5 h-5" />
-                </div>
-                <h3 className="font-bold text-lg text-[color:var(--text-title)] lowercase">education</h3>
-              </div>
+          <div ref={eduCardRef} className="neo-card p-6 md:p-8 flex flex-col justify-between h-full">
+            <div className="space-y-3">
+              <h3 className="font-extrabold text-xl text-[color:var(--text-title)] lowercase">
+                education
+              </h3>
               
               {portfolio.education.map((edu, idx) => (
-                <div key={edu.slug || idx} className="space-y-3 pt-2">
+                <div key={edu.slug || idx} className="space-y-3 pt-1">
                   <div>
                     <h4 className="font-bold text-base md:text-lg">
                       {edu.url ? (

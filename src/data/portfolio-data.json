@@ -121,6 +121,10 @@
       "title": "Lead Organizer",
       "organization": "GDG on Campus (IIIT Sri City)",
       "duration": "Sept 2025 - June 2026",
+      "images": [
+        "/van.jpeg",
+        "/van.jpeg"
+      ],
       "bullets": [
         "Served as the GDG on Campus Lead at IIIT Sri City, fostering tech awareness and practical learning on campus.",
         "Led strategic technical initiatives, including the Google Cloud Jam, achieving over 100+ program completions.",
@@ -128,6 +132,7 @@
       ]
     }
   ],
+
   "fallback": {
     "profile": {
       "name": "Vanya Awasthi",
