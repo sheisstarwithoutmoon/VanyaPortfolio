@@ -251,12 +251,13 @@
         "company": "Hoffero TravTech LLP",
         "location": "Singapore (Remote)",
         "duration": "MAY 2025 - OCT 2025",
+        "certificateUrl": "https://drive.google.com/file/u/0/d/1Qs2_4KyQ2_vqjKHtKMWt3c6VZmyRI0S9/view?usp=sharing&pli=1",
         "tech": ["Node.js", "GCP", "MCP", "Flutter", "Firebase"],
         "bullets": [
-          "Designed and implemented Instagram webhooks enabling automated creator messaging at scale, helping hotels and creators coordinate seamlessly.",
-          "Improved an AI Trip Guide chatbot using Model Context Protocol (MCP) architecture, decreasing response latency by 20%.",
-          "Built and deployed scalable backend microservices on Google Cloud Platform using GCP Cloud Run and Cloud Functions to achieve reliable, automated production workflows.",
-          "Integrated multiple third-party APIs, structured unit and integration tests, and resolved high-priority production bugs to boost overall server stability."
+          "Automated Instagram engagement by routing webhook events through Google Cloud Functions, with the deployed webhook handling 1M+ requests over 14 days at a 99.994% request success rate.",
+          "Built an MCP server to decouple the chatbot from backend integrations, exposing 5 reusable tools.",
+          "Secured Meta Graph API integrations with a backend proxy, removing client-side credential exposure and centralizing authenticated requests.",
+          "Optimized the AI Trip Guide with a two-level geocoding cache using in-memory storage and Firestore persistence, eliminating redundant external lookups and reducing API overhead during itinerary generation."
         ]
       }
     ],

@@ -55,7 +55,7 @@ export default function Contact() {
   return (
     <section 
       id="contact" 
-      className={`pt-16 pb-40 transition-colors duration-300 relative ${
+      className={`scroll-mt-16 md:scroll-mt-24 pt-16 pb-40 transition-colors duration-300 relative ${
         isDarkMode ? 'bg-transparent text-[color:var(--text-primary)]' : 'bg-transparent text-[color:var(--text-primary)]'
       }`}
     >

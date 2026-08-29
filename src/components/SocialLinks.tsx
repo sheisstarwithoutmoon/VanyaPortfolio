@@ -157,6 +157,20 @@ const SocialLinks = () => {
                 href={link.href}
                 target={link.external ? "_blank" : "_self"}
                 rel={link.external ? "noopener noreferrer" : ""}
+                onClick={
+                  !link.external && link.href.startsWith('#')
+                    ? (e) => {
+                        e.preventDefault();
+                        const targetId = link.href.replace('#', '');
+                        if (targetId === 'top') {
+                          window.scrollTo({ top: 0, behavior: 'smooth' });
+                        } else {
+                          document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' });
+                        }
+                        window.history.replaceState(null, '', window.location.pathname);
+                      }
+                    : undefined
+                }
                 className={`p-2 rounded-full transition-all duration-200 ease-in-out transform hover:scale-110 block cursor-pointer ${
                   isDarkMode
                     ? 'text-gray-300 hover:text-white hover:bg-white/10'
